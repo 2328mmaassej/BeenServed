@@ -1,10 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Category:</b>
-  <%= @dish.category %>
-</p>
+<h2>
+   The Best <%=  @dish.category %>'s in Chicago
+</h2>
 
+<table class="table table-striped">
+  <tr>
+    <th>Restaurant</th>
+    <th></th>
+    <th>Rating</th>
+    <th></th>
+    <th>Review</th>
+  </tr>
 
-<%= link_to 'Edit', edit_dish_path(@dish) %> |
-<%= link_to 'Back', dishes_path %>
+  <tr><% @dish.meals.each do |meal| %>
+    <td><%= link_to meal.restaurant.name, restaurant_url(meal.restaurant_id) %></td>
+  <td></td>
+    <td><%= meal.rating %></td>
+      <td></td>
+    <td><%= meal.review %></td>  </tr>
+    <% end  %>
+
+</table>
+

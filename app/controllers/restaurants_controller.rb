@@ -4,19 +4,7 @@ require 'open-uri'
 require 'json'
 
   def index
-@restaurants = []
-url = "https://maps.googleapis.com/maps/api/place/search/json?location=41.8781136,-87.6297982&radius=1000&sensor=false&types=restaurant&key=AIzaSyBYRXlDDuJMdXcvyHx7RCdRQRgYGvQCV2U"
-@restaurantdata = JSON.parse((open(url).read))
-@restaurantrubydata = @restaurantdata["results"]
-@restaurantrubydata.each do |restaurant|
-@restaurants << restaurant["name"]
-@restaurants << restaurant["vicinity"]
-  end
-
-respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @restaurants }
-    end
+    @restaurants = Restaurant.all
   end
 
   # GET /restaurants/1
