@@ -1,6 +1,6 @@
-<h1>Listing dishes</h1>
+<h2>What do you wanna eat?</h2>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Category</th>
     <th></th>
@@ -10,14 +10,11 @@
 
 <% @dishes.each do |dish| %>
   <tr>
-    <td><%= dish.category %></td>
-    <td><%= link_to 'Show', dish %></td>
-    <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-    <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to dish.category, dish %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Dish', new_dish_path %>
+<nav class="btn"><%= link_to 'New Dish', new_dish_path %></nav>

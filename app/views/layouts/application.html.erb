@@ -8,9 +8,20 @@
 </head>
 <body>
 
+<div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" <%= link_to "Home", home_url %>
+    <ul class="nav">
+    <li><a <%= link_to "Restaurants", restaurants_url %></a></li>
+    <li><a <%= link_to "Dishes", dishes_url %></a></li>
+    <li><a <%= link_to "Users", users_url %></a></li>
 <form class="navbar-search pull-left" action="/flights">
             <input type="text" class="search-query span3" placeholder="Search by Restaurant" name="keyword">
             </form>
+  </ul>
+  </div>
+</div>
+
 <%= yield %>
 
 </body>
