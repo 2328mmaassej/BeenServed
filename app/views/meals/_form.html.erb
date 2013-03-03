@@ -12,27 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id %>
   </div>
-  <div class="field">
-    <%= f.label :restaurant_id %><br />
+  <div class="form-inline">
+    <%= f.label :restaurant_id, "Restaurant:" %>
     <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>
   </div>
-  <div class="field">
-    <%= f.label :dish_id %><br />
+  <div class="form-inline">
+    <%= f.label :dish_id, "Dish:" %>
     <%= f.collection_select :dish_id, Dish.all, :id, :category %>
   </div>
-  <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.number_field :rating  %>
+  <div class="form-inline">
+    <%= f.label :rating, "Rating:" %>
+    <%= f.radio_button :rating, false %><%= f.label :rating, "1" %>
+    <%= f.radio_button :rating, false %><%= f.label :rating, "2" %>
+    <%= f.radio_button :rating, false %><%= f.label :rating, "3" %>
+    <%= f.radio_button :rating, false %><%= f.label :rating, "4" %>
+    <%= f.radio_button :rating, false %><%= f.label :rating, "5" %>
   </div>
   <div class="field">
-    <%= f.label :review %><br />
-    <%= f.text_area :review %>
+    <%= f.text_area :review, placeholder: 'Write your review here', rows: "3"  %>
   </div>
-  <div class="field">
-    <%= f.label :picture %><br />
+  <div class="form-inline">
+    <%= f.label :picture %>
     <%= f.text_field :picture %>
   </div>
   <div class="actions">
