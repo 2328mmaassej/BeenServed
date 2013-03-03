@@ -1,20 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @restaurant.name %>
-</p>
+<h2>
+   Rated Dishes at <%=  @restaurant.name %>
+</h2>
 
 <p>
   <b>Address:</b>
   <%= @restaurant.address %>
 </p>
 
-<p>
-  <b>Dish</b>
-  <%= @dishes %>
-</p>
+<table class="table table-striped">
+  <tr>
+    <th>Dish</th>
+    <th></th>
+    <th>Rating</th>
+    <th></th>
+    <th>Review</th>
+  </tr>
 
+  <tr><% @restaurant.meals.each do |i| %>
+    <td><%= i.dish.category %></td>
+  <td></td>
+    <td><%= i.rating %></td>
+      <td></td>
+    <td><%= i.review %></td>  </tr>
+    <% end  %>
+
+</table>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

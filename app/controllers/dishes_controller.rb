@@ -44,7 +44,7 @@ class DishesController < ApplicationController
 
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
+        format.html { redirect_to dishes_url, notice: 'Dish was successfully created.' }
         format.json { render json: @dish, status: :created, location: @dish }
       else
         format.html { render action: "new" }

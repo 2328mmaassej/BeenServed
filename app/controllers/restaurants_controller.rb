@@ -4,11 +4,16 @@ require 'open-uri'
 require 'json'
 
   def index
-    @restaurants = Restaurant.all
+    if params[:keyword].present?
+      keyword = params[:keyword].downcase
+      @restaurants = Restaurant.where("LOWER(name) LIKE ?", "%#{keyword}%")
+    else
+      @restaurants = Restaurant.all
+    end
+
+     @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 10)
   end
 
-  # GET /restaurants/1
-  # GET /restaurants/1.json
   def show
     @restaurant = Restaurant.find(params[:id])
 

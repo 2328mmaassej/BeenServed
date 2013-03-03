@@ -1,10 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
+
+<h2>
+   Hello, <%=  @user.username.capitalize %>!
+</h2>
+
+<table class="table table-striped">
+  <tr>
+    <th>My Recommendations</th>
+    <th></th>
+    <th>Restaurant</th>
+    <th></th>
+    <th>Rating</th>
+    <th></th>
+    <th>Review</th>
+  </tr>
+
+  <tr><% @user.meals.each do |i| %>
+    <td><%= i.dish.category %></td>
+    <td></td>
+    <td><%= i.restaurant.name %></td>
+    <td></td>
+    <td><%= i.rating %></td>
+      <td></td>
+    <td><%= i.review %></td>  </tr>
+    <% end  %>
+
+</table>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
