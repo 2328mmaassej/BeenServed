@@ -1,7 +1,7 @@
 <%= form_for(@meal) do |f| %>
   <% if @meal.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+      <h3><%= pluralize(@meal.errors.count, "error") %> prohibited this meal from being saved:</h3>
 
       <ul>
       <% @meal.errors.full_messages.each do |msg| %>
@@ -24,11 +24,11 @@
   </div>
   <div class="form-inline">
     <%= f.label :rating, "Rating:" %>
-    <%= f.radio_button :rating, false %><%= f.label :rating, "1" %>
-    <%= f.radio_button :rating, false %><%= f.label :rating, "2" %>
-    <%= f.radio_button :rating, false %><%= f.label :rating, "3" %>
-    <%= f.radio_button :rating, false %><%= f.label :rating, "4" %>
-    <%= f.radio_button :rating, false %><%= f.label :rating, "5" %>
+    <%= f.radio_button :rating, "1" %><%= f.label :rating, "1" %>
+    <%= f.radio_button :rating, "2" %><%= f.label :rating, "2" %>
+    <%= f.radio_button :rating, "3" %><%= f.label :rating, "3" %>
+    <%= f.radio_button :rating, "4" %><%= f.label :rating, "4" %>
+    <%= f.radio_button :rating, "5" %><%= f.label :rating, "5" %>
   </div>
   <div class="field">
     <%= f.text_area :review, placeholder: 'Write your review here', rows: "3"  %>

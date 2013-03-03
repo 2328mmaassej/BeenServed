@@ -24,7 +24,7 @@ class MealsController < ApplicationController
   # GET /meals/new
   # GET /meals/new.json
   def new
-    @meal = Meal.new
+    @meal = Meal.new(user_id: session[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb

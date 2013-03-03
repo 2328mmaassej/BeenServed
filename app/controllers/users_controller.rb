@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
 before_filter :authorize_user, except: [:new]
+before_filter :find_user, except: [:new, :create, :index]
+
+ def find_user
+    @user = User.find_by_id(params[:id]11)
 
  def authorize_user
     @user = User.find_by_id(params[:id])
