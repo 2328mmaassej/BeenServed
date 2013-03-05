@@ -1,19 +1,27 @@
 class UsersController < ApplicationController
 
-before_filter :authorize_user, except: [:new]
 before_filter :find_user, except: [:new, :create, :index]
+before_filter :authorize_user, except: [:new, :create]
 
  def find_user
     @user = User.find_by_id(params[:id])
   end
 
  def authorize_user
-    @user = User.find_by_id(params[:id])
-    if current_user.blank? || current_user != @user
-      logger.info "Not authorized! #{current_user.inspect}"
-      redirect_to root_url, notice: "Nice try"
+    logger.info "session[:user_id] = #{session[:user_id]}"
+    logger.info "session[:user_id].class = #{session[:user_id].class}"
+    logger.info "params[:user_id] = #{params[:id]}"
+    logger.info "params[:user_id].class = #{params[:id].class}"
+    if session[:user_id].to_s != params[:id]
+      redirect_to root_url, notice: "Nice try!"
     end
   end
+  #   @user = User.find_by_id(params[:id])
+  #   if current_user.blank? || current_user != @user
+  #     logger.info "Not authorized! #{current_user.inspect}"
+  #     redirect_to root_url, notice: "Nice try"
+  #   end
+  # end
 
   def index
     @users = User.all
@@ -51,6 +59,7 @@ before_filter :find_user, except: [:new, :create, :index]
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -61,8 +70,6 @@ before_filter :find_user, except: [:new, :create, :index]
   end
 
   def update
-    @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -75,7 +82,6 @@ before_filter :find_user, except: [:new, :create, :index]
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|

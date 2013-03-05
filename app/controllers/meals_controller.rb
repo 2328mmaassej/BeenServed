@@ -1,6 +1,14 @@
 class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
+  before_filter :authorize_user
+
+  def authorize_user
+    if session[:user_id].blank?
+      redirect_to root_url, notice: "Please login first."
+    end
+  end
+
   def index
     @meals = Meal.all
 
