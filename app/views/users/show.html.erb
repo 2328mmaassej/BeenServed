@@ -1,32 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
 
+      <h3>
+         <%=  @user.username.capitalize %>'s Profile
+      </h3>
+      <p><%= link_to '(edit profile)', edit_user_path(@user) %></p>
+      <p># of reviews: <%= @user.meals.count %></p>
+      <p>average rating:
+        <%= number_with_precision(@user.meals.average(:rating), :precision =>2) %></p>
+    </div>
+    <div class="span10">
+      <!--Body content-->
 
-<h2>
-   Hello, <%=  @user.username.capitalize %>!
-</h2>
+      <table class="table">
+        <tr>
+          <th>My Recommendations</th>
+          <th></th>
+          <th>Restaurant</th>
+          <th></th>
+          <th>Rating</th>
+          <th></th>
+          <th>Review</th>
+        </tr>
 
-<table class="table table-striped">
-  <tr>
-    <th>My Recommendations</th>
-    <th></th>
-    <th>Restaurant</th>
-    <th></th>
-    <th>Rating</th>
-    <th></th>
-    <th>Review</th>
-  </tr>
+        <tr><% @user.meals.each do |i| %>
+          <td><%= i.dish.category %></td>
+          <td></td>
+          <td><%= i.restaurant.name %></td>
+          <td></td>
+          <td><%= i.rating %></td>
+            <td></td>
+          <td><%= i.review %></td>  </tr>
+          <% end  %>
+      </table>
+    </div>
+  </div>
+</div>
 
-  <tr><% @user.meals.each do |i| %>
-    <td><%= i.dish.category %></td>
-    <td></td>
-    <td><%= i.restaurant.name %></td>
-    <td></td>
-    <td><%= i.rating %></td>
-      <td></td>
-    <td><%= i.review %></td>  </tr>
-    <% end  %>
-
-</table>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
