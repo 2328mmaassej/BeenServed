@@ -84,7 +84,7 @@ class MealsController < ApplicationController
     @meal.destroy
 
     respond_to do |format|
-      format.html { redirect_to meals_url }
+      format.html { redirect_to user_url(current_user.id) }
       format.json { head :no_content }
     end
   end

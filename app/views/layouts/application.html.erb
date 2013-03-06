@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>nom nom</title>
+  <title>BeenServed</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+ </head>
 <body>
 
 <div class="navbar">
     <div class="navbar-inner">
        <% if current_user.present? %>
-          <a class="brand" <%= link_to "My Profile", user_url(current_user.id) %>
+          <a class="brand" <%= link_to "Home", home_url %>
         <% else %>
           <a class="brand" <%= link_to "Home", login_url %>
         <% end %>
     <ul class="nav">
     <li><a <%= link_to "Where do you wanna eat?", restaurants_url %></a></li>
     <li><a <%= link_to "What do you wanna eat?", dishes_url %></a></li>
-    <li><a <%= link_to "What do you recommend?", new_meal_url %></a></li>
+    <li><a <%= link_to "What do you review?", new_meal_url %></a></li>
     <% if current_user.present? %>
+             <li><%= link_to "My Profile", user_url(current_user.id) %></li>
               <li><%= link_to "Logout", logout_url %></li>
             <% else %>
             <li><%= link_to "Sign Up", signup_url %></li>

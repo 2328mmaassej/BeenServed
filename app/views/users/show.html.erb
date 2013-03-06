@@ -13,29 +13,24 @@
     </div>
     <div class="span10">
       <!--Body content-->
-
-      <table class="table">
-        <tr>
-          <th>My Recommendations</th>
-          <th></th>
-          <th>Restaurant</th>
-          <th></th>
-          <th>Rating</th>
-          <th></th>
-          <th>Review</th>
-        </tr>
-
-        <tr><% @user.meals.each do |i| %>
-          <td><%= i.dish.category %></td>
-          <td></td>
-          <td><%= i.restaurant.name %></td>
-          <td></td>
-          <td><%= i.rating %></td>
-            <td></td>
-          <td><%= i.review %></td>  </tr>
-          <% end  %>
-      </table>
+    <legend>My Reviews</legend>
+      <div id="accordion">
+        <% @user.meals.order('created_at desc').each do |i| %>
+        <h3><%= i.dish.category %> @ <%= i.restaurant.name %> | <%= i.rating %> stars | <%= i.created_at.strftime("%m/%d/%Y")%> | <%= link_to 'Delete', i, method: :delete, data: { confirm: 'Are you sure?' } %></h3>
+        <div>
+          <p><%= i.review %></p>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+
+<script>
+$( "#accordion" ).accordion();
+</script>
+
+
+
 
