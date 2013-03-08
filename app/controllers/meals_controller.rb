@@ -1,6 +1,14 @@
 class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
+  before_filter :authorize_user
+
+  def authorize_user
+    if session[:user_id].blank?
+      redirect_to root_url, notice: "Please login first."
+    end
+  end
+
   def index
     @meals = Meal.all
 
@@ -76,7 +84,7 @@ class MealsController < ApplicationController
     @meal.destroy
 
     respond_to do |format|
-      format.html { redirect_to meals_url }
+      format.html { redirect_to user_url(current_user.id) }
       format.json { head :no_content }
     end
   end

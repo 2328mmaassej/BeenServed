@@ -1,6 +1,14 @@
 class DishesController < ApplicationController
   # GET /dishes
   # GET /dishes.json
+  before_filter :authorize_user
+
+  def authorize_user
+    if session[:user_id].blank?
+      redirect_to root_url, notice: "Please login first."
+    end
+  end
+
   def index
     @dishes = Dish.all
 

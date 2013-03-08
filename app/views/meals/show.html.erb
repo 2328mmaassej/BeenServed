@@ -1,33 +1,8 @@
-<p>
-  <b>User:</b>
-  <%= @meal.user_id %>
-</p>
-
-<p>
-  <b>Restaurant:</b>
-  <%= @meal.restaurant_id %>
-</p>
-
-<p>
-  <b>Dish:</b>
-  <%= @meal.dish_id %>
-</p>
-
-<p>
-  <b>Rating:</b>
-  <%= @meal.rating %>
-</p>
-
-<p>
-  <b>Review:</b>
-  <%= @meal.review %>
-</p>
-
-<p>
-  <b>Picture:</b>
-  <%= @meal.picture %>
-</p>
-
+<H3> <%= @meal.dish.category %> @ <%= @meal.restaurant.name %>
+</H3>
+<p><b>Rating:</b> <%= @meal.rating %></p>
+<p><b>Review:</b> <%= @meal.review %></p>
+<p><b>Picture:</b> <%= @meal.picture %></p>
 
 <%= link_to 'Edit', edit_meal_path(@meal) %> |
-<%= link_to 'Back', meals_path %>
+<%= link_to 'Return to profile', user_url(current_user.id) %>
