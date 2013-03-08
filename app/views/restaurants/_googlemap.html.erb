@@ -1,6 +1,9 @@
 <div id="googlemap"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa0dzvBQBFQNVm363M9QJ5IFb1J23ro6A&sensor=true" type="text/javascript">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa0dzvBQBFQNVm363M9QJ5IFb1J23ro6A&amp;sensor=true&amp;libraries=places" type="text/javascript"></script>
+
+<script type="text/javascript"> 
+
 <!--
   var defaultZoom = 16;
   
@@ -93,10 +96,13 @@
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
-    
+    // 
     // Autofill the fields in the form. TODO: improve parsing of the returned JSON data.
     var address = place.address_components;
     var website = place.url;
+    console.log('should see address');
+
+    console.log(address);
 
     if (address[address.length - 1]) {
       var zipcode = address[address.length - 1].long_name;
@@ -117,7 +123,7 @@
       var streetname = address[1].long_name;
     };
     if (place.name) {
-      var name = place.name;
+      var location_name = place.name;
     }
     var formatted_address = place.formatted_address;
     var formatted_phone_number = place.formatted_phone_number;

@@ -49,18 +49,16 @@
           <%= f.text_field :country, class: "span12" %>
         </div>
       </div>
-      <div class="control-group">
-        <%= f.label :lat, class: "control-label" %>
         <div class="controls">
-          <%= f.text_field :lat, class: "span12" %>
+          <%= f.hidden_field :lat, class: "span12" %>
         </div>
       </div>
-      <div class="control-group">
-        <%= f.label :lng, class: "control-label" %>
         <div class="controls">
-          <%= f.text_field :lng, class: "span12" %>
+          <%= f.hidden_field :lng, class: "span12" %>
         </div>
-      </div>
+
+      
+
       <div class="control-group pull-right">
         <%= f.submit "Add Restaurant", class: 'btn' %>
       </div>
@@ -79,11 +77,13 @@
       <% end %>
       <div class="control-group">
         <%= label_tag :search, "Search For Restaurant" %>
-        <%= text_field_tag :location_search, nil, class: "span12 search-query", type: "search" %>
+        <%= text_field_tag :restaurant_search, nil, class: "span12 search-query", type: "search" %>
       </div>
       <%= render partial: "googlemap" %>
     </div>
   </div>
 </fieldset>
 <% end %>
+
+
 

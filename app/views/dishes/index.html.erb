@@ -4,13 +4,14 @@
   <tr>
     <th>Category</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th>Top Rated</th>
   </tr>
 
 <% @dishes.each do |dish| %>
   <tr>
     <td><%= link_to dish.category, dish %></td>
+ 	<th></th>
+    <th><%= dish.meals.find_by_rating(5) %></th>  
   </tr>
 <% end %>
 </table>
