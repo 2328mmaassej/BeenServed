@@ -7,6 +7,8 @@
   <%= @restaurant.address %>
 </p>
 
+<%= render :partial => "googlemap_show" %>
+
 <table class="table table-striped">
   <tr>
     <th>Dish</th>
@@ -25,6 +27,7 @@
     <% end  %>
 
 </table>
+
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

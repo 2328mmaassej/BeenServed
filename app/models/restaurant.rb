@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
-  attr_accessible :address, :name
+  attr_accessible :address, :name, :phone_number, :district, :postcode, :city, :country, :lat, :lng
 
   validates_presence_of :address, :name
 

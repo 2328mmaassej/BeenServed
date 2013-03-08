@@ -7,7 +7,13 @@ gem 'rails', '3.2.12'
 
 gem 'will_paginate'
 
+group :development do
 gem 'sqlite3'
+end
+
+group :production do
+gem 'pg'
+end
 
 gem 'simple_form'
 
