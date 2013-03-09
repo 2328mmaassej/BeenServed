@@ -11,7 +11,7 @@
   <tr>
     <td><%= link_to dish.category, dish %></td>
  	<th></th>
-    <th><%= dish.meals.find_by_rating(5) %></th>  
+    <th><%= dish.meals.order('rating desc').first.restaurant.name %></th>
   </tr>
 <% end %>
 </table>

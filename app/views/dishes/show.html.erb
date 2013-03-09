@@ -11,7 +11,7 @@
     <th>Review</th>
   </tr>
 
-  <tr><% @dish.meals.each do |meal| %>
+  <tr><% @dish.meals.order('rating desc').each do |meal| %>
     <td><%= link_to meal.restaurant.name, restaurant_url(meal.restaurant_id) %></td>
   <td></td>
     <td><%= meal.rating %></td>
