@@ -37,6 +37,7 @@
   <div class="form-inline"><br>
     <%= f.label :picture, "Picture:", class: "span2"%>
     <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
   </div>
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-primary"%>

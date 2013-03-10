@@ -1,7 +1,11 @@
   <h3 id= "meal_<%= meal.id %>"><%= meal.dish.category %> @ <%= meal.restaurant.name %> | <%= meal.rating %> stars | <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> | <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
   </h3>
   <div id= "meal_<%= meal.id %>">
-    <p><%= meal.review %>
+    <p>
+      <%= image_tag(meal.picture_url) if meal.picture? %>
+    </p>
+    <p>
+      <%= meal.review %>
     </p>
   </div>
 

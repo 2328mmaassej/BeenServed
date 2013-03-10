@@ -7,6 +7,9 @@ gem 'rails', '3.2.12'
 
 gem 'will_paginate'
 
+gem 'carrierwave'
+gem "fog", "~> 1.3.1"
+
 group :development do
 gem 'sqlite3'
 end
