@@ -1,0 +1,8 @@
+  <h3 id= "meal_<%= meal.id %>" class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" aria-controls="meal_<%= meal.id %>"><%= meal.dish.category %> @ <%= meal.restaurant.name %> | <%= meal.rating %> stars | <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> | <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
+  </h3>
+  <div id= "meal_<%= meal.id %>" class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" style="display: block; height: 30.09027624130249px;" aria-labelledby="meal_<%= meal.id %>" role="tabpanel" >
+    <p><%= meal.review %>
+    </p>
+  </div>
+
+

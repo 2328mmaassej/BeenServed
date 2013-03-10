@@ -1,0 +1,44 @@
+<%= form_for(@meal, :remote => true) do |f| %>
+  <% if @meal.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@meal.errors.count, "error") %> prohibited this meal from being saved:</h3>
+
+      <ul>
+      <% @meal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :user_id %>
+  </div>
+  <div class="form-inline">
+    <%= f.label :restaurant_id, "Restaurant:", class: "span2" %>
+    <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>
+  </div>
+  <div class="form-inline"><br>
+    <%= f.label :dish_id, "Dish:", class: "span2" %>
+    <%= f.collection_select :dish_id, Dish.all, :id, :category %>
+  </div>
+  <div class="form-inline"><br>
+    <%= f.label :rating, "Rating:", class: "span2" %>
+    <%= f.radio_button :rating, "1" %><%= f.label :rating, "1" %>
+    <%= f.radio_button :rating, "2" %><%= f.label :rating, "2" %>
+    <%= f.radio_button :rating, "3" %><%= f.label :rating, "3" %>
+    <%= f.radio_button :rating, "4" %><%= f.label :rating, "4" %>
+    <%= f.radio_button :rating, "5" %><%= f.label :rating, "5" %>
+  </div>
+  <div class="form-inline"><br>
+    <%= f.label :review, "Review:", class: "span2" %>
+    <%= f.text_area :review, placeholder: 'Write your review here', rows: "3"  %>
+  </div>
+  <div class="form-inline"><br>
+    <%= f.label :picture, "Picture:", class: "span2"%>
+    <%= f.file_field :picture %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary"%>
+  </div>
+<% end %>

@@ -1,0 +1,3 @@
+$('#accordion').prepend('<%= j(render 'meal_partial', :meal => @meal) %>');
+$('#meal_<%= @meal.id %>').slideDown();
+// $('#idea_description').val('');

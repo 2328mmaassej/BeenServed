@@ -27,7 +27,7 @@ before_filter :authorize_user, except: [:new, :create]
 
   def show
     @user = User.find(params[:id])
-
+    @meal = Meal.new(user_id: session[:user_id])
     respond_to do |format|
       format.html
       format.json { render json: @user }

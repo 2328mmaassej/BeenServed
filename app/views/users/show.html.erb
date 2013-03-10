@@ -13,13 +13,13 @@
     </div>
     <div class="span10">
       <!--Body content-->
-    <legend>My Reviews</legend>
+    <legend>Write a Review</legend>
+    <%= render 'meal_form', meal: @meal %>
+
+    <legend>My Latest Reviews</legend>
       <div id="accordion">
-        <% @user.meals.order('created_at desc').each do |i| %>
-        <h3><%= i.dish.category %> @ <%= i.restaurant.name %> | <%= i.rating %> stars | <%= i.created_at.strftime("%m/%d/%Y")%> | <%= link_to 'Delete', i, method: :delete, data: { confirm: 'Are you sure?' } %></h3>
-        <div>
-          <p><%= i.review %></p>
-        </div>
+        <% @user.meals.order('created_at desc').each do |meal| %>
+        <%= render 'meal_partial', meal: meal %>
         <% end %>
       </div>
     </div>

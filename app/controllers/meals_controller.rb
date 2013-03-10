@@ -54,6 +54,7 @@ class MealsController < ApplicationController
       if @meal.save
         format.html { redirect_to user_url(current_user.id), notice: 'Meal was successfully created.' }
         format.json { render json: @meal, status: :created, location: @meal }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @meal.errors, status: :unprocessable_entity }
@@ -86,6 +87,7 @@ class MealsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_url(current_user.id) }
       format.json { head :no_content }
+      format.js
     end
   end
 end
