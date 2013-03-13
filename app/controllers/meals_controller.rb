@@ -69,7 +69,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.update_attributes(params[:meal])
-        format.html { redirect_to @meal, notice: 'Meal was successfully updated.' }
+        format.html { redirect_to user_url(current_user.id), notice: 'Meal was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
