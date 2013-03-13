@@ -17,20 +17,13 @@
     <%= render 'meal_form', meal: @meal %>
 
     <legend>My Latest Reviews</legend>
-      <div id="accordion">
+      <ul id="list_of_meals">
         <% @user.meals.order('created_at desc').each do |meal| %>
         <%= render 'meal_partial', meal: meal %>
         <% end %>
-      </div>
+      </ul>
     </div>
   </div>
 </div>
-
-
-<script>
-$( "#accordion" ).accordion();
-</script>
-
-
 
 

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class PictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -29,7 +27,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process :scale => [200, 300]
+  process :scale => [300, 300]
   #
   def scale(width, height)
 

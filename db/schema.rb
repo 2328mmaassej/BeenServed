@@ -11,23 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304195219) do
+ActiveRecord::Schema.define(:version => 20130312141852) do
+
+  create_table "Meals", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.integer  "dish_id"
+    t.float    "rating"
+    t.text     "review"
+    t.string   "picture"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "dishes", :force => true do |t|
     t.string   "category"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "meals", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "restaurant_id"
-    t.integer  "dish_id"
-    t.integer  "rating"
-    t.text     "review"
-    t.string   "picture"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
   create_table "restaurants", :force => true do |t|

@@ -1,8 +1,27 @@
-  <h3 id= "meal_<%= meal.id %>" class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" aria-controls="meal_<%= meal.id %>"><%= meal.dish.category %> @ <%= meal.restaurant.name %> | <%= meal.rating %> stars | <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> | <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
-  </h3>
-  <div id= "meal_<%= meal.id %>" class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" style="display: block; height: 30.09027624130249px;" aria-labelledby="meal_<%= meal.id %>" role="tabpanel" >
-    <p><%= meal.review %>
+<li id= "meal_<%= meal.id %>" class="meal">
+    <% if meal.picture? %>
+    <p class="meal_top_<%= meal.id %>" id="pic">
+    <%= image_tag(meal.picture_url)%></p>
+    <p class="meal_top_<%= meal.id %>" id="hidden"><%= meal.review %>
     </p>
-  </div>
+    <% else %>
+    <p class="meal_top_<%= meal.id %>" id="review">
+    <%= meal.review %>
+    </p>
+    <% end %>
+  <h3 class="meal">
+    <%= meal.dish.category %> @ <%= meal.restaurant.name %><br>
+        <div align="center">
+          <% meal.rating.to_i.times do |i|%>
+          <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
+          <% end %>
+        </div>
 
+
+<!--     <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> |--><br>
+    <%= link_to image_tag('pencil.png', size: '20x20'), edit_meal_path(meal) %>
+    <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
+
+  </h3>
+</li>
 

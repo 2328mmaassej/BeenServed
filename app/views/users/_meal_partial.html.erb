@@ -1,12 +1,27 @@
-  <h3 id= "meal_<%= meal.id %>"><%= meal.dish.category %> @ <%= meal.restaurant.name %> | <%= meal.rating %> stars | <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> | <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
-  </h3>
-  <div id= "meal_<%= meal.id %>">
-    <p>
-      <%= image_tag(meal.picture_url) if meal.picture? %>
+<li id= "meal_<%= meal.id %>" class="meal">
+    <% if meal.picture? %>
+    <p class="meal_top_<%= meal.id %>" id="pic">
+    <%= image_tag(meal.picture_url)%></p>
+    <p class="meal_top_<%= meal.id %>" id="hidden"><%= meal.review %>
     </p>
-    <p>
-      <%= meal.review %>
+    <% else %>
+    <p class="meal_top_<%= meal.id %>" id="review">
+    <%= meal.review %>
     </p>
-  </div>
+    <% end %>
+  <h3 class="meal">
+    <%= meal.dish.category %> @ <%= meal.restaurant.name %><br>
+        <div align="center">
+          <% meal.rating.to_i.times do |i|%>
+          <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
+          <% end %>
+        </div>
 
+
+<!--     <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> |--><br>
+    <%= link_to image_tag('pencil.png', size: '20x20'), edit_meal_path(meal) %>
+    <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
+
+  </h3>
+</li>
 
