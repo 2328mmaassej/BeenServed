@@ -10,8 +10,12 @@ class DishesController < ApplicationController
   end
 
   def index
-    @dishes = Dish.all
-
+ if params[:keyword].present?
+      keyword = params[:keyword].downcase
+      @dishes = Dish.where("LOWER(category) LIKE ?", "%#{keyword}%").paginate(:page => params[:page], :per_page => 10)
+    else
+      @dishes = Dish.paginate(:page => params[:page], :per_page => 10)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @dishes }

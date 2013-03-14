@@ -1,5 +1,9 @@
 <h2>What do you wanna eat?</h2>
 
+<form class="navbar-search pull-left" action="/dishes">
+  <input type="text" class="search-query span3" placeholder="Search by Dish" name="keyword">
+</form>
+
 <table class="table table-striped">
   <tr>
     <th>Category</th>
@@ -15,6 +19,8 @@
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @dishes %>
 
 <br />
 

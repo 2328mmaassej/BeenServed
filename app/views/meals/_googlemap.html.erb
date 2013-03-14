@@ -1,0 +1,172 @@
+<div id="googlemap"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa0dzvBQBFQNVm363M9QJ5IFb1J23ro6A&amp;sensor=true&amp;libraries=places" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+<!--
+  var defaultZoom = 16;
+
+  var mapOptions = {
+    center: new google.maps.LatLng(41.8500, -87.6500),
+    zoom: defaultZoom,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    scrollwheel: false,
+    scaleControl: false
+  };
+  var map = new google.maps.Map(document.getElementById('googlemap'),mapOptions);
+
+  var mylat = document.getElementById("restaurant_lat").value;
+  var mylng = document.getElementById("restaurant_lng").value;
+  if (jQuery.isEmptyObject(mylat)) {
+    var mylat = '41.8500';
+    var mylng = '-87.6500';
+    var defaultZoom = 14;
+  };
+
+  var centrePoint = new google.maps.LatLng(mylat, mylng);
+  map.setCenter(centrePoint);
+  map.setZoom(defaultZoom);
+
+  marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+    position: centrePoint
+  });
+
+  var defaultImage = new google.maps.MarkerImage(
+      "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+      new google.maps.Size(71, 71),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(35, 35));
+  marker.setIcon(defaultImage);
+
+  google.maps.event.addListener(marker, 'click', toggleBounce);
+
+  var infowindow = new google.maps.InfoWindow();
+
+  // Address Autocomplete
+  var input = document.getElementById('restaurant_search');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+
+  // add a drag listener to the map
+  google.maps.event.addListener(marker, "dragend", function() {
+    var point = marker.getPosition();
+    map.panTo(point);
+    document.getElementById("restaurant_lat").value = point.lat();
+    document.getElementById("restaurant_lng").value = point.lng();
+    infowindow.close();
+    marker.setIcon(defaultImage);
+  });
+  var place;
+  var photos;
+
+  // Autocomplete Listener
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    place = autocomplete.getPlace();
+    marker.setPosition(place.geometry.location);
+    map.panTo(place.geometry.location);
+    map.setZoom(16);
+    document.getElementById("restaurant_lat").value = place.geometry.location.lat();
+    document.getElementById("restaurant_lng").value = place.geometry.location.lng();
+
+    // Sets the proper image on the marker. ie. school/hospital marker
+    var image = new google.maps.MarkerImage(
+        place.icon,
+        new google.maps.Size(71, 71),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(17, 34),
+        new google.maps.Size(35, 35));
+    marker.setIcon(image);
+    marker.setPosition(place.geometry.location);
+
+    var address = '';
+    if (place.address_components) {
+      address = [(place.address_components[0] &&
+                  place.address_components[0].short_name || ''),
+                 (place.address_components[1] &&
+                  place.address_components[1].short_name || ''),
+                 (place.address_components[2] &&
+                  place.address_components[2].short_name || '')
+                ].join(' ');
+    }
+
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+    infowindow.open(map, marker);
+    //
+    // Autofill the fields in the form. TODO: improve parsing of the returned JSON data.
+    var address = place.address_components;
+    var website = place.url;
+    console.log('should see address');
+
+    console.log(address);
+
+    if (address[address.length - 1]) {
+      var zipcode = address[address.length - 1].long_name;
+    };
+    if (address[address.length - 2]) {
+      var country = address[address.length - 2].long_name;
+    };
+    if (address[address.length - 3]) {
+      var city = address[address.length - 3].long_name;
+    };
+    if (address[address.length - 4]) {
+      var sublocality = address[address.length - 4].long_name;
+    };
+    if (address[0]) {
+      var streetnumber = address[0].long_name;
+    };
+    if (address[1]) {
+      var streetname = address[1].long_name;
+    };
+    if (place.name) {
+      var location_name = place.name;
+    }
+    var formatted_address = place.formatted_address;
+    var formatted_phone_number = place.formatted_phone_number;
+
+    if (zipcode){
+      document.getElementById("restaurant_postcode").value = zipcode;
+    }
+    if (city) {
+      document.getElementById("restaurant_city").value = city;
+    }
+    if (country) {
+      document.getElementById("restaurant_country").value = country;
+    }
+    if (sublocality) {
+      document.getElementById("restaurant_district").value = sublocality;
+    }
+    if (streetname) {
+      document.getElementById("restaurant_address").value = streetname;
+    }
+    if (location_name) {
+      document.getElementById("restaurant_name").value = location_name;
+    }
+    if (formatted_phone_number) {
+      document.getElementById("restaurant_phone_number").value = formatted_phone_number;
+    }
+    photos = place.photos;
+    $('#place_images').empty();
+    for (var i = 0; i < photos.length; i++) {
+      var url = photos[i].raw_reference.fife_url;
+      $('#place_images').prepend('<img src="' + url + '"/>');
+    }
+  });
+
+  // This is the function to animate the marker after dropping it.
+  function toggleBounce() {
+    if (marker.getAnimation() != null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  };
+
+//-->
+</script>
+
+<br />

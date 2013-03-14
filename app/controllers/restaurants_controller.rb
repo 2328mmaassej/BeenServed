@@ -35,9 +35,6 @@ require 'json'
   # GET /restaurants/new.json
   def new
     @restaurant = Restaurant.new
-    @restaurant.meals.build
-    @restaurant.dishes.build
-    @restaurant.users.build
 
     respond_to do |format|
       format.html # new.html.erb

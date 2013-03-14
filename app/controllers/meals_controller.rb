@@ -10,7 +10,7 @@ class MealsController < ApplicationController
   end
 
   def index
-    @meals = Meal.all
+     @meals = Meal.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,6 +33,9 @@ class MealsController < ApplicationController
   # GET /meals/new.json
   def new
     @meal = Meal.new(user_id: session[:user_id])
+    # @meal.restaurant.build
+    # @meal.dish.build
+    # @meal.user.build
 
     respond_to do |format|
       format.html # new.html.erb
