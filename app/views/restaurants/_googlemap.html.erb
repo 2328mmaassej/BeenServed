@@ -2,11 +2,11 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa0dzvBQBFQNVm363M9QJ5IFb1J23ro6A&amp;sensor=true&amp;libraries=places" type="text/javascript"></script>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 
 <!--
   var defaultZoom = 16;
-  
+
   var mapOptions = {
     center: new google.maps.LatLng(41.8500, -87.6500),
     zoom: defaultZoom,
@@ -15,7 +15,7 @@
     scaleControl: false
   };
   var map = new google.maps.Map(document.getElementById('googlemap'),mapOptions);
-	
+
 	var mylat = document.getElementById("restaurant_lat").value;
 	var mylng = document.getElementById("restaurant_lng").value;
 	if (jQuery.isEmptyObject(mylat)) {
@@ -26,8 +26,8 @@
 
   var centrePoint = new google.maps.LatLng(mylat, mylng);
   map.setCenter(centrePoint);
-  map.setZoom(defaultZoom); 
-	
+  map.setZoom(defaultZoom);
+
   marker = new google.maps.Marker({
     map: map,
     draggable: true,
@@ -42,16 +42,16 @@
       new google.maps.Point(17, 34),
       new google.maps.Size(35, 35));
   marker.setIcon(defaultImage);
-	
+
   google.maps.event.addListener(marker, 'click', toggleBounce);
-	
+
   var infowindow = new google.maps.InfoWindow();
-  
+
   // Address Autocomplete
   var input = document.getElementById('restaurant_search');
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
-  
+
 	// add a drag listener to the map
 	google.maps.event.addListener(marker, "dragend", function() {
 		var point = marker.getPosition();
@@ -72,7 +72,7 @@
     map.setZoom(16);
 		document.getElementById("restaurant_lat").value = place.geometry.location.lat();
 		document.getElementById("restaurant_lng").value = place.geometry.location.lng();
-		
+
 		// Sets the proper image on the marker. ie. school/hospital marker
 		var image = new google.maps.MarkerImage(
         place.icon,
@@ -96,7 +96,7 @@
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
-    // 
+    //
     // Autofill the fields in the form. TODO: improve parsing of the returned JSON data.
     var address = place.address_components;
     var website = place.url;
@@ -127,7 +127,7 @@
     }
     var formatted_address = place.formatted_address;
     var formatted_phone_number = place.formatted_phone_number;
-    
+
     if (zipcode){
       document.getElementById("restaurant_postcode").value = zipcode;
     }
@@ -156,7 +156,7 @@
       $('#place_images').prepend('<img src="' + url + '"/>');
     }
   });
-  
+
   // This is the function to animate the marker after dropping it.
   function toggleBounce() {
     if (marker.getAnimation() != null) {

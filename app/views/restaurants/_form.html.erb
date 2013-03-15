@@ -25,20 +25,35 @@
           <%= f.text_field :address, class: "span12" %>
         </div>
       </div>
+      <div class="control-group">
+        <%= f.label :phone_number, class: "control-label" %>
         <div class="controls">
-          <%= f.hidden_field :phone_number, class: "span12" %>
+          <%= f.text_field :phone_number, class: "span12" %>
         </div>
-        <div class="controls">
-          <%= f.hidden_field :district, class: "span12" %>
         </div>
+      <div class="control-group">
+        <%= f.label :district, class: "control-label" %>
         <div class="controls">
-          <%= f.hidden_field :postcode, class: "span12" %>
+          <%= f.text_field :district, class: "span12" %>
         </div>
-        <div class="controls">
-          <%= f.hidden_field :city, class: "span12" %>
         </div>
+     <div class="control-group">
+        <%= f.label :postcode, class: "control-label" %>
         <div class="controls">
-          <%= f.hidden_field :country, class: "span12" %>
+        <%= f.text_field :postcode, class: "span12" %>
+        </div>
+        </div>
+     <div class="control-group">
+        <%= f.label :city, "State", class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :city, class: "span12" %>
+        </div>
+        </div>
+      <div class="control-group">
+        <%= f.label :country, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :country, class: "span12" %>
+        </div>
         </div>
         <div class="controls">
           <%= f.hidden_field :lat, class: "span12" %>
@@ -47,34 +62,6 @@
           <%= f.hidden_field :lng, class: "span12" %>
         </div>
 <div class=”field”>
-
-<%= f.fields_for :dish do |ts| %>
-  <div class="form-inline"><br>
-    <%= ts.label :dish_id, "Dish:", class: "span2" %>
-    <%= ts.collection_select :dish_id, Dish.all, :id, :category %>
-  </div>
-<% end %>
-
-
-  <%= f.fields_for :meal do |ts| %>
-        <br>
-          <%= ts.label :meal_rating, "Rating:", class: "span2" %>
-          <%= ts.radio_button :meal_rating, "1", class: "star" %>
-          <%= ts.radio_button :meal_rating, "2", class: "star" %>
-          <%= ts.radio_button :meal_rating, "3", class: "star" %>
-          <%= ts.radio_button :meal_rating, "4", class: "star" %>
-          <%= ts.radio_button :meal_rating, "5", class: "star" %>
-        <br>
-          <div class="form-inline"><br>
-        <%= ts.label :review, "Review:", class: "span2" %>
-        <%= ts.text_area :review, placeholder: 'Write your review here', rows: "3"  %>
-      </div>
-      <div class="form-inline"><br>
-        <%= ts.label :picture, "Picture:", class: "span2"%>
-        <%= ts.file_field :picture %>
-        <%= ts.hidden_field :picture_cache %>
-      </div>
-  <% end %>
 
       <div class="control-group">
         <%= f.submit "Add Restaurant", class: 'btn' %>

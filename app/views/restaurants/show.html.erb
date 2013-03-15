@@ -1,11 +1,13 @@
-<h2>
+<h3>
    Rated Dishes at <%=  @restaurant.name %>
-</h2>
+</h3>
 
 <p>
-  <b>Address:</b>
-  <%= @restaurant.address %>
-  <%= @restaurant.city %>
+  <b>Basic Info:</b>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.city %>, <%= @restaurant.postcode %></p>
+  <p><%= @restaurant.phone_number %></p>
+
 </p>
 
 <table class="table table-striped">
