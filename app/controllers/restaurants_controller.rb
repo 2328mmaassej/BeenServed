@@ -16,7 +16,7 @@ require 'json'
       keyword = params[:keyword].downcase
       @restaurants = Restaurant.where("LOWER(name) LIKE ?", "%#{keyword}%").paginate(:page => params[:page], :per_page => 10)
     else
-      @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 10)
+      @restaurants = Restaurant.order("name asc").paginate(:page => params[:page], :per_page => 10)
     end
 
 

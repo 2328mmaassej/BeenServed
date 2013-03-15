@@ -11,7 +11,7 @@ class MealsController < ApplicationController
 
   def index
      @meals = Meal.order('created_at desc')
-     @meal = Meal.new
+     @meal = Meal.new(user_id: session[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb

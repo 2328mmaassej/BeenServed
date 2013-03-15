@@ -110,3 +110,7 @@ font-family: 'Patrick Hand SC', cursive;
   display: block;
   -ms-interpolation-mode: bicubic;
 }
+
+.white {
+  color: #fff;
+}
