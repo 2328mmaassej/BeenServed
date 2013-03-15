@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BeenServed</title>
+  <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+
+  <title>nom nom</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -12,9 +14,9 @@
 <div class="navbar">
     <div class="navbar-inner">
        <% if current_user.present? %>
-          <a class="brand" <%= link_to "Home", home_url %>
+          <a class="brand" <%= link_to "nom nom", home_url %>
         <% else %>
-          <a class="brand" <%= link_to "Home", login_url %>
+          <a class="brand" <%= link_to "nom nom", login_url %>
         <% end %>
     <ul class="nav">
     <li><a <%= link_to "Where do you wanna eat?", restaurants_url %></a></li>

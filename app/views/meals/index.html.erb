@@ -1,33 +1,19 @@
-<h1>Listing meals</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Restaurant</th>
-    <th>Dish</th>
-    <th>Rating</th>
-    <th>Review</th>
-    <th>Picture</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @meals.each do |meal| %>
-  <tr>
-    <td><%= meal.user.username %></td>
-    <td><%= meal.restaurant.name%></td>
-    <td><%= meal.dish.category %></td>
-    <td><%= meal.rating %></td>
-    <td><%= meal.review %></td>
-    <td><%= meal.picture %></td>
-    <td><%= link_to 'Show', meal %></td>
-    <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
-    <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Meal', new_meal_path %>
+<h1>Meals</h1>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+      <legend>Write a Review</legend>
+      <%= render 'form', meal: @meal %>
+    </div>
+    <div class="span10">
+      <!--Body content-->
+      <legend>Latest Reviews</legend>
+      <ul id="list_of_meals">
+        <% @meals.each do |meal| %>
+        <%= render 'meal_partial', meal: meal %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

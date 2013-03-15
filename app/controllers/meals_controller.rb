@@ -10,11 +10,13 @@ class MealsController < ApplicationController
   end
 
   def index
-     @meals = Meal.all
+     @meals = Meal.order('created_at desc')
+     @meal = Meal.new
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @meals }
+      format.js
     end
   end
 
