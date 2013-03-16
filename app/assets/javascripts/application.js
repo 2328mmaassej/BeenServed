@@ -41,15 +41,6 @@
       $('p.words', this).addClass('hidden');
       });
 
-/*
-    $("p.words").mouseout(function(){
-      $("p.pic").removeClass("hidden");
-      $("p.words").addClass("hidden");
-      });*/
-/*
-    $(this).fadeIn(500);
-*/
-
     var img = $('#bgimg');
     if(img.height()) {
       pr = $('#bgimg').width() / $('#bgimg').height();

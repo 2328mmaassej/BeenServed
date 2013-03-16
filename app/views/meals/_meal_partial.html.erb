@@ -10,9 +10,9 @@
     <%= meal.review %>
     </p>
     <% end %>
-  <h3 class="meal">
+  <h5 class="meal">
     <%= meal.dish.category %> @ <%= meal.restaurant.name %><br>
-        <div id="ratingstars">
+          <div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px">
           <% meal.rating.to_i.times do |i|%>
           <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
           <% end %>
