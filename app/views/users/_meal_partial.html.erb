@@ -1,11 +1,12 @@
 <li id= "meal_<%= meal.id %>" class="meal">
     <% if meal.picture? %>
-    <p class="meal_top_<%= meal.id %>" id="pic">
-    <%= image_tag(meal.picture_url)%></p>
-    <p class="meal_top_<%= meal.id %>" id="hidden"><%= meal.review %>
-    </p>
+    <div class="boxes">
+    <%= image_tag(meal.picture_url, :class=>"pic")%>
+      <p class="words hidden" id="review">
+      <%= meal.review %>
+    </p></div>
     <% else %>
-    <p class="meal_top_<%= meal.id %>" id="review">
+    <p id="review">
     <%= meal.review %>
     </p>
     <% end %>
@@ -17,8 +18,6 @@
           <% end %>
         </div>
         <!--     <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> |-->
-    <%= link_to image_tag('pencil.png', size: '20x20'), edit_meal_path(meal) %>
-    <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
 
   </h3>
 </li>

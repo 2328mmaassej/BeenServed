@@ -45,7 +45,7 @@ li.meal {
   width: 210px;
 }
 
-img#pic {
+img.pic {
   margin-left:auto;
   margin-right:auto;
   border: 5px solid #fff;
@@ -64,6 +64,18 @@ h3.meal {
        -o-transition: all .25s ease-in-out;
           transition: all .25s ease-in-out;
 */}
+.hidden {
+  text-align: center;
+  vertical-align:middle;
+  background: #fff;
+  border: 5px solid #fff;
+  height: 130px;
+  width: 200px;
+  display:table-cell;
+  display:none !important;
+  font-size: 18px;
+  overflow: hidden;
+}
 
 p#review {
   text-align: center;
@@ -71,22 +83,8 @@ p#review {
   display:table-cell;
   background: #fff;
   border: 5px solid #fff;
-  height: 130px;
+  height: 150px;
   width: 200px;
-  font-size: 18px;
-  overflow: hidden;
-}
-
-
-p#hidden {
-  text-align: center;
-  vertical-align:middle;
-  background: #fff;
-  border: 5px solid #fff;
-  height: 130px;
-  width: 200px;
-  display:table-cell;
-  display:none;
   font-size: 18px;
   overflow: hidden;
 }
