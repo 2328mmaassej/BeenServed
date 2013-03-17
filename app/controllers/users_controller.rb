@@ -8,11 +8,8 @@ before_filter :authorize_user, except: [:new, :create]
   end
 
  def authorize_user
-    logger.info "session[:user_id] = #{session[:user_id]}"
-    logger.info "params[:user_id] = #{params[:id]}"
     if session[:user_id].to_s != params[:id]
-      logger.info "Not authorized! #{current_user.inspect}"
-      redirect_to root_url, notice: "Nice try!"
+      redirect_to root_url
     end
   end
 

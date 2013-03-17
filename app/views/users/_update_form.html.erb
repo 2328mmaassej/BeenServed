@@ -1,0 +1,38 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-inline">
+    <%= f.label :username, "Username: " %>&nbsp;<strong><%= @user.username %> </strong>
+  <div class="form-inline">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="form-inline">
+    <%= f.label :password, "Confirm password: " %>
+    <%= f.password_field :password %>
+  </div>
+<div class="form-inline">
+    <%= image_tag(@user.avatar.thumb.url) if @user.avatar? %><br>
+    <%= f.label :avatar, "Avatar: "%>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+    </div>
+    <div class="field"><%= f.label :remove_avatar, "Remove Avatar" %>
+    <%= f.check_box :remove_avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+

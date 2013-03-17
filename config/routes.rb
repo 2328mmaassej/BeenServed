@@ -1,6 +1,6 @@
 BeenServed::Application.routes.draw do
 
-  root :to => "sessions#new"
+  root :to => "meals#index"
 
   get "/home" => "Home#index", :as => "home"
 

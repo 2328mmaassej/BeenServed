@@ -2,7 +2,7 @@
   <div class="row-fluid">
     <div class="span2">
       <!--Sidebar content-->
-
+      <div><%= image_tag(@user.avatar.thumb.url) %></div>
       <h3>
          <%=  @user.username.capitalize %>'s Profile
       </h3>

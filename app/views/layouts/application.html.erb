@@ -13,13 +13,10 @@
 
 <div class="navbar">
     <div class="navbar-inner">
-       <% if current_user.present? %>
           <a class="brand" <%= link_to "nom nom", meals_url %>
-        <% else %>
-          <a class="brand" <%= link_to "nom nom", login_url %>
-        <% end %>
     <ul class="nav">
     <li><a <%= link_to "Where do you wanna eat?", restaurants_url %></a></li>
+    <li><a <%= link_to "What do you want to eat", dishes_url %></a></li>
     <li><a <%= link_to "Write a review", new_meal_url %></a></li>
     <% if current_user.present? %>
              <li><%= link_to "My Profile", user_url(current_user.id) %></li>

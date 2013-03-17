@@ -43,7 +43,9 @@ li.meal {
   height: 250px;
   padding: 10px;
   width: 210px;
-}
+  overflow: hidden;
+/*  border-radius: 15px;
+*/}
 
 img.pic {
   margin-left:auto;
@@ -51,6 +53,7 @@ img.pic {
   border: 5px solid #fff;
   height: 150px;
   width: 200px;
+  border-radius: 15px;
 }
 
 h5.meal {
@@ -60,6 +63,7 @@ h5.meal {
   opacity: 1;
   text-align: center;
   position: relative;
+
 /*  -webkit-transition: all .25s ease-in-out;
      -moz-transition: all .25s ease-in-out;
        -o-transition: all .25s ease-in-out;
@@ -70,12 +74,11 @@ h5.meal {
   vertical-align:middle;
   background: #fff;
   border: 5px solid #fff;
-  height: 130px;
+  height: 150px;
   width: 200px;
   display:table-cell;
   display:none !important;
   font-size: 18px;
-  overflow: hidden;
 }
 
 p#review {
@@ -87,7 +90,12 @@ p#review {
   height: 150px;
   width: 200px;
   font-size: 18px;
-  overflow: hidden;
+  border-radius: 15px;
+}
+
+.boxes{
+    height: 150px;
+    overflow: hidden;
 }
 
 .brand {

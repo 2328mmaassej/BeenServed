@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
 
 require 'open-uri'
 require 'json'
-  before_filter :authorize_user
+  before_filter :authorize_user, except: [:index,:show]
 
   def authorize_user
     if session[:user_id].blank?

@@ -11,6 +11,7 @@ gem 'jquery-star-rating-rails'
 
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
+gem 'mini_magick'
 
 group :development do
   gem 'sqlite3'

@@ -1,0 +1,24 @@
+<li id= "meal_<%= meal.id %>" class="meal">
+    <% if meal.picture? %>
+    <div class="boxes">
+    <%= image_tag(meal.picture_url, :class=>"pic")%>
+      <p class="words hidden" id="review">
+      <%= meal.review %>
+    </p></div>
+    <% else %>
+    <p id="review">
+    <%= meal.review %>
+    </p>
+    <% end %>
+  <h5 class="meal">
+    <%= meal.dish.category %> @ <%= meal.restaurant.name %><br>
+          <div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px">
+          <% meal.rating.to_i.times do |i|%>
+          <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
+          <% end %>
+        </div>
+        <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%>
+
+  </h3>
+</li>
+

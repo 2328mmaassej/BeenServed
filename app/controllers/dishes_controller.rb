@@ -1,7 +1,7 @@
 class DishesController < ApplicationController
   # GET /dishes
   # GET /dishes.json
-  before_filter :authorize_user
+  before_filter :authorize_user, except: [:index,:show]
 
   def authorize_user
     if session[:user_id].blank?

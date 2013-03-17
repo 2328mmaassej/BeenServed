@@ -1,19 +1,27 @@
 <h1>Meals</h1>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span3">
+    <% if current_user.present? %>
       <!--Sidebar content-->
-      <legend>Write a Review</legend>
-      <%= render 'form', meal: @meal %>
-    </div>
-    <div class="span9">
+      <div class="span3">
+        <legend>Write a Review</legend>
+        <%= render 'form', meal: @meal %>
+      </div>
+      <div class="span9">
       <!--Body content-->
       <legend>Latest Reviews</legend>
       <ul id="list_of_meals">
         <% @meals.each do |meal| %>
         <%= render 'meal_partial', meal: meal %>
         <% end %>
+      </div>
+      <% else %>
+      <legend>Latest Reviews</legend>
+      <ul id="list_of_meals">
+        <% @meals.each do |meal| %>
+        <%= render 'meal_partial', meal: meal %>
+        <% end %>
       </ul>
-    </div>
+      <% end %>
   </div>
 </div>
