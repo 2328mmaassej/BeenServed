@@ -3,6 +3,7 @@ class Meal < ActiveRecord::Base
 
   validates_presence_of :dish_id, :rating, :restaurant_id, :review, :user_id
 
+
   belongs_to :dish
   belongs_to :restaurant
   belongs_to :user

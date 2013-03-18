@@ -1,27 +1,25 @@
 <h2>What do you wanna eat?</h2>
 
-<form class="navbar-search pull-left" action="/dishes">
+
+
+<!-- <form class="navbar-search pull-left" action="/dishes">
   <input type="text" class="search-query span3" placeholder="Search by Dish" name="keyword">
 </form>
+ -->
 
-<table class="table table-striped">
+
+<!-- <table class="table table-striped">
   <tr>
     <th>Category</th>
     <th></th>
-    <th>Top Rated</th>
   </tr>
 
 <% @dishes.each do |dish| %>
   <tr>
     <td><%= link_to dish.category, dish %></td>
  	<th></th>
-    <th><%= dish.meals.order('rating desc').first.restaurant.name %></th>
-  </tr>
 <% end %>
 </table>
 
-<%= will_paginate @dishes %>
-
-<br />
-
 <nav class="btn"><%= link_to 'New Category', new_dish_path %></nav>
+ -->

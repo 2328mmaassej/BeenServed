@@ -54,7 +54,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
-        format.html { redirect_to user_url(current_user.id), notice: 'Meal was successfully created.' }
+        format.html { redirect_to user_url(current_user.id)}
         format.json { render json: @meal, status: :created, location: @meal }
         format.js
       else
