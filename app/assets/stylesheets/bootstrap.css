@@ -292,7 +292,8 @@ a:focus {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 1020px;
+  width: 940px;
+  margin: auto;
 }
 
 .span12 {
@@ -4611,7 +4612,8 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > li > a {
   float: none;
   padding: 9.5px 15px 9.5px;
-  color: #e8cc4f;
+  background-color: #e8cc4f;
+  color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 0 #eeeeee;
 }
@@ -4622,9 +4624,9 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  color: #ffffff;
+  color: #e8cc4f;
   text-decoration: none;
-  background-color: #e8cc4f;
+  background-color: #ffffff;
 }
 
 .navbar .nav > .active > a,
@@ -6183,8 +6185,10 @@ a.badge:focus {
 .navbar .nav > li > a {
   font-family: 'Patrick Hand SC', cursive;
   font-size: 45px;
-  padding: 45px 10px 8px;
-  vertical-align: bottom;
+  margin-top: 45px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
   -webkit-transition: color ease-in-out 0.2s;
      -moz-transition: color ease-in-out 0.2s;

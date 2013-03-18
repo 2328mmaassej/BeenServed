@@ -2,24 +2,19 @@
 
 
 
-<!-- <form class="navbar-search pull-left" action="/dishes">
+<form class="navbar-search pull-left" action="/dishes">
   <input type="text" class="search-query span3" placeholder="Search by Dish" name="keyword">
 </form>
- -->
+<br><br><br>
 
-
-<!-- <table class="table table-striped">
-  <tr>
-    <th>Category</th>
-    <th></th>
-  </tr>
-
+<div id="accordion">
 <% @dishes.each do |dish| %>
-  <tr>
-    <td><%= link_to dish.category, dish %></td>
- 	<th></th>
-<% end %>
-</table>
+  <h3><%= dish.category %></h3>
+    <div><ul><% dish.restaurants.each do |restaurant| %>
+      <li><%= link_to restaurant.name, restaurant %></li>
+    <% end %></ul></div>
+<% end -%>
+  </div>
 
 <nav class="btn"><%= link_to 'New Category', new_dish_path %></nav>
- -->
+

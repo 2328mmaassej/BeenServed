@@ -10,8 +10,24 @@ class MealsController < ApplicationController
   end
 
   def index
+    if params[:keyword].present?
+      keyword = params[:keyword].downcase
+     @dishes = Dish.where("LOWER(category) LIKE ?", "%#{keyword}%").paginate(:page => params[:page], :per_page => 10)
+     if @dishes.empty?
+      redirect_to meals_url, notice: "No reviews match your search"
+      return
+      else
+      @meals = []
+      @dishes.each do |dish|
+        dish.meals.order('rating desc').each do |meal|
+          @meals << meal
+        end
+      end
+    end
+    else
      @meals = Meal.order('created_at desc')
      @meal = Meal.new(user_id: session[:user_id])
+   end
 
     respond_to do |format|
       format.html # index.html.erb

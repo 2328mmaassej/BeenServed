@@ -1,26 +1,14 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <% if current_user.present? %>
-      <!--Sidebar content-->
-      <div class="span3">
-        <legend>Write a Review</legend>
-        <%= render 'form', meal: @meal %>
-      </div>
-      <div class="span9">
-      <!--Body content-->
+<form class="navbar-search align=center" action="/meals">
+  <input type="text" class="search-query span12" placeholder="Search by Dish" name="keyword">
+</form>
       <legend>Reviews</legend>
-        <ul id="list_of_meals">
-        <% @meals.each do |meal| %>
-        <%= render 'meal_partial', meal: meal %>
-        <% end %>
-      </div>
-      <% else %>
-      <legend>Reviews</legend>
+
       <ul id="list_of_meals">
         <% @meals.each do |meal| %>
         <%= render 'meal_partial', meal: meal %>
         <% end %>
       </ul>
-      <% end %>
   </div>
 </div>

@@ -18,7 +18,10 @@ require 'json'
     else
       @restaurants = Restaurant.order("name asc").paginate(:page => params[:page], :per_page => 10)
     end
+    if @restaurants.empty?
+      redirect_to new_restaurant_url
 
+    end
 
   end
 

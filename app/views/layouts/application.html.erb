@@ -10,20 +10,20 @@
 
  </head>
 <body>
-<div class="navbar">
   <div class="container">
+<div class="navbar">
     <div class="navbar-inner">
     <ul class="nav">
           <a class="brand" <%= link_to image_tag('nomnomlogo.png', size: '150x150'), meals_url %> </a>
-    <li><%= link_to "what to eat", dishes_url %></li>
-    <li><%= link_to "where to eat", restaurants_url %></li>
-    <li><%= link_to "write a review", new_meal_url %></li>
+    <li><%= link_to "what", dishes_url %></li>
+    <li><%= link_to "where", restaurants_url %></li>
+    <li><%= link_to "write", new_meal_url %></li>
     <% if current_user.present? %>
              <li><%= link_to "my profile", user_url(current_user.id) %></li>
               <li><%= link_to "logout", logout_url %></li>
             <% else %>
             <li><%= link_to "sign up", signup_url %></li>
-            <li><%= link_to "login", login_url %></li>
+           <li><%= link_to "login", login_url %></li>
             <% end %>
   </ul>
   </div>
