@@ -9,7 +9,7 @@
       <p><%= link_to '(edit profile)', edit_user_path(@user) %></p>
       <p># of reviews: <%= @user.meals.count %></p>
       <p>average rating:
-        <%= number_with_precision(@user.meals.average(:rating), :precision =>2) %></p>
+        <%= number_with_precision(@user.meals.average(:rating), :precision =>1) %></p>
     </div>
     <div class="span10">
       <!--Body content-->
