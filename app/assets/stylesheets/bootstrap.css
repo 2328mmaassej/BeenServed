@@ -4614,7 +4614,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a {
   float: none;
-  padding: 9.5px 15px 9.5px;
+  padding: 9.5px 18px 9.5px 18px;
   color: #ffffff;
   font-family: 'Patrick Hand SC', cursive;
   font-size: 34px;
@@ -6175,10 +6175,10 @@ a.badge:focus {
 .navbar .brand {
   display: inline-block;
   width: 160px;
-  height: 40px;
+  height: 60px;
   padding: 0;
   margin: 0 0px 0 0;
-  background: url("/assets/nomnomlogo.png") no-repeat;
+  background: #ffffff;
   background-size:160px 100px;
   /*text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
   -webkit-transition: color ease-in-out 0.2s;
