@@ -27,6 +27,9 @@ ol, ul {
   list-style: none;
 }
 
+.glyphw{
+    background-image: url(/assets/glyphicons-halflings-white.png);
+}
 
 li.meal {
   background: #FAFAFA;
@@ -98,9 +101,9 @@ p#review {
     overflow: hidden;
 }
 
-.brand {
+/*.brand {
 font-family: 'Patrick Hand SC', cursive;
-}
+}*/
 
 #bgimgwrapper {
   position: fixed;
