@@ -2892,10 +2892,10 @@ table th[class*="span"],
   display: inline-block;
   width: 0;
   height: 0;
-  vertical-align: top;
-  border-top: 4px solid #000000;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
+  vertical-align: bottom;
+  border-top: 8px solid #000000;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
   content: "";
 }
 
@@ -3018,7 +3018,7 @@ table th[class*="span"],
 
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
-  border-top: 0;
+  border-top: 8;
   border-bottom: 4px solid #000000;
   content: "";
 }
@@ -4164,7 +4164,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav .dropdown-toggle .caret {
-  margin-top: 6px;
+  margin-top: 8px;
   border-top-color: #0099dd;
   border-bottom-color: #0099dd;
 }
@@ -4514,12 +4514,13 @@ input[type="submit"].btn.btn-mini {
 .navbar-search {
   position: relative;
   float: left;
+  padding-top: 18px;
   margin-top: 5px;
   margin-bottom: 0;
 }
 
 .navbar-search .search-query {
-  padding: 4px 14px;
+  padding: 10px 14px 10px;
   margin-bottom: 0;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -4614,7 +4615,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a {
   float: none;
-  padding: 9.5px 18px 9.5px 18px;
+  padding: 30px 18px 42px 18px;
   color: #ffffff;
   font-family: 'Patrick Hand SC', cursive;
   font-size: 34px;
@@ -6175,7 +6176,7 @@ a.badge:focus {
 .navbar .brand {
   display: inline-block;
   width: 160px;
-  height: 60px;
+  height: 93px;
   padding: 0;
   margin: 0 0px 0 0;
   background: #ffffff;
@@ -6196,7 +6197,7 @@ a.badge:focus {
 }
 
 .navbar .nav > li > a {
-  padding: 11px 10px 20px;
+  padding: 30px 18px 42px 18px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
   -webkit-transition: color ease-in-out 0.2s;
      -moz-transition: color ease-in-out 0.2s;
@@ -6362,7 +6363,7 @@ div.subnav-fixed {
 .nav > li.dropdown.active > .dropdown-toggle .caret,
 .nav > li.dropdown.open > .dropdown-toggle .caret,
 .nav > li.dropdown.open.active > .dropdown-toggle .caret {
-  border-top: 4px solid #666666;
+  border-top: 8px solid #666666;
   border-top-color: #666666;
   opacity: 1;
 }
@@ -6371,7 +6372,7 @@ div.subnav-fixed {
 .nav > li.dropdown.active > .dropdown-toggle:hover .caret,
 .nav > li.dropdown.open > .dropdown-toggle:hover .caret,
 .nav > li.dropdown.open.active > .dropdown-toggle:hover .caret {
-  border-top: 4px solid #0099dd;
+  border-top: 8px solid #0099dd;
   border-top-color: #0099dd;
 }
 

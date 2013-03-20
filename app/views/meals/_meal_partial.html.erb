@@ -11,14 +11,17 @@
     </p>
     <% end %>
   <h5 class="meal">
-    <%= meal.dish.category %> @ <%= meal.restaurant.name %><br>
+    <%= link_to meal.dish.category, dish_url(meal.dish.id) %> @ <%= link_to meal.restaurant.name, restaurant_url(meal.restaurant.id) %><br>
           <div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px">
           <% meal.rating.to_i.times do |i|%>
           <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
           <% end %>
         </div>
+        <% if session[:user_id] == meal.user.id %>
+        <%= link_to image_tag('pencil.png', size: '20x20'), edit_meal_path(meal) %>
+        <%= link_to image_tag('trash-can-icon.jpg', size: '20x20'), meal, method: :delete, remote: true %>
         <!--     <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> |-->
-
+        <% end -%>
   </h3>
 </li>
 

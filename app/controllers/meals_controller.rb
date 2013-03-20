@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
-  before_filter :authorize_user, except: [:index]
+  before_filter :authorize_user, except: [:index, :show]
 
   def authorize_user
     if session[:user_id].blank?
@@ -29,6 +29,10 @@ class MealsController < ApplicationController
      @meal = Meal.new(user_id: session[:user_id])
    end
 
+   if session[:user_id].presence == nil
+    @user = User.new
+   end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @meals }
@@ -40,6 +44,9 @@ class MealsController < ApplicationController
   # GET /meals/1.json
   def show
     @meal = Meal.find(params[:id])
+    if session[:user_id].presence == nil
+     @user = User.new
+   end
 
     respond_to do |format|
       format.html # show.html.erb

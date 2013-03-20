@@ -7,9 +7,132 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <style>
+    body { font-size: 62.5%; }
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+  </style>
+  <script>
+  $(function() {
+    var name = $( "#name" ),
+      email = $( "#email" ),
+      password = $( "#password" ),
+      allFields = $( [] ).add( name ).add( email ).add( password ),
+      tips = $( ".validateTips" );
 
- </head>
+    function updateTips( t ) {
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
+    }
+
+    function checkLength( o, n, min, max ) {
+      if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+        updateTips( "Length of " + n + " must be between " +
+          min + " and " + max + "." );
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    function checkRegexp( o, regexp, n ) {
+      if ( !( regexp.test( o.val() ) ) ) {
+        o.addClass( "ui-state-error" );
+        updateTips( n );
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    $( "#dialog-form" ).dialog({
+      autoOpen: false,
+      height: 300,
+      width: 350,
+      modal: true,
+/*      buttons: {
+        "Create an account": function() {
+          var bValid = true;
+          allFields.removeClass( "ui-state-error" );
+
+          bValid = bValid && checkLength( name, "username", 3, 16 );
+          bValid = bValid && checkLength( email, "email", 6, 80 );
+          bValid = bValid && checkLength( password, "password", 5, 16 );
+
+          bValid = bValid && checkRegexp( name, /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter." );
+          // From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+          bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com" );
+          bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
+
+          if ( bValid ) {
+            $( "#users tbody" ).append( "<tr>" +
+              "<td>" + name.val() + "</td>" +
+              "<td>" + email.val() + "</td>" +
+              "<td>" + password.val() + "</td>" +
+            "</tr>" );
+            $( this ).dialog( "close" );
+          }
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      },*/
+      close: function() {
+        allFields.val( "" ).removeClass( "ui-state-error" );
+      }
+    });
+
+    $( "#signup-user" )
+      .button()
+      .click(function() {
+        $( "#dialog-form" ).dialog( "open" );
+      });
+
+    $( "#dialog-form-login" ).dialog({
+      autoOpen: false,
+      height: 300,
+      width: 350,
+      modal: true,
+      close: function() {
+        allFields.val( "" ).removeClass( "ui-state-error" );
+      }
+    });
+
+      $( "#login-user" )
+      .button()
+      .click(function() {
+        $( "#dialog-form-login" ).dialog( "open" );
+      });
+  });
+  </script></head>
 <body>
+
+<div id="dialog-form" title="Sign up">
+  <p class="validateTips">All form fields are required.</p>
+  <%= render 'users/form' %>
+</div>
+
+<div id="dialog-form-login" title="Log in">
+  <p class="validateTips">All form fields are required.</p>
+  <%= render '/sessions/new_session_partial' %>
+</div>
+
 <div class="navbar">
   <div class="navbar-inner">
       <div class="container">
@@ -24,6 +147,7 @@
                 <li><%= link_to "by recent reviews", meals_url %></li>
               </ul>
             </li>
+            <li><%= link_to "write a review", new_meal_url %></li>
           </ul>
           <form class="navbar-search pull-right" action="">
             <input type="text" class="search-query span3" placeholder="Search by dish or restaurant">
@@ -31,43 +155,24 @@
           <ul class="nav pull-right">
             <% if current_user.present? %>
              <li><%= link_to "my profile", user_url(current_user.id) %></li>
-              <li><%= link_to "logout", logout_url %></li>
+             <li><%= link_to "logout", logout_url %></li>
             <% else %>
-            <li><%= link_to "sign up", signup_url %></li>
-           <li><%= link_to "login", login_url %></li>
+            <li id="signup-user">sign up</li>
+           <li id="login-user">log in</li>
             <% end %>
             </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar-inner -->
-  </div><!-- /.navbar -->
-</div><!--/.container -->
-<!--
-<div class="navbar">
-  <div class="container">
-    <div class="navbar-inner">
-          <a class="brand" <%= link_to image_tag('nomnomlogo.png', size: '150x150'), meals_url %> </a>
-    <ul class="nav">
-    <li><%= link_to "what", dishes_url %></li>
-    <li><%= link_to "where", restaurants_url %></li>
-    <li><%= link_to "write", new_meal_url %></li>
-    <% if current_user.present? %>
-             <li><%= link_to "my profile", user_url(current_user.id) %></li>
-              <li><%= link_to "logout", logout_url %></li>
-            <% else %>
-            <li><%= link_to "sign up", signup_url %></li>
-           <li><%= link_to "login", login_url %></li>
-            <% end %>
-  </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
 <h3><div class="item", align="center">
   <%= notice %>
-</div></h3> -->
+</div></h3>
 <%= yield %>
 </div>
 </body>
-</html>
+ </html>
 
 
 

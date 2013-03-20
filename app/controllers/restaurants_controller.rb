@@ -19,14 +19,21 @@ require 'json'
       @restaurants = Restaurant.order("name asc").paginate(:page => params[:page], :per_page => 10)
     end
     if @restaurants.empty?
-      redirect_to new_restaurant_url
-
+      redirect_to new_restaurant_url, notice: "Restaurant not found. Please add a new restaurant."
     end
+
+   if session[:user_id].presence == nil
+    @user = User.new
+   end
 
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
+
+    if session[:user_id].presence == nil
+      @user = User.new
+    end
 
     respond_to do |format|
       format.html # show.html.erb
