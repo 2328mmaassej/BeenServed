@@ -1,23 +1,26 @@
 <h2>
-   The Best <%=  @dish.category %>'s in Chicago
+   <%=  @dish.category %>
 </h2>
 
-<table class="table table-striped">
+<table class="table table-striped span2">
   <tr>
     <th>Restaurant</th>
-    <th></th>
-    <th>Rating</th>
-    <th></th>
-    <th>Review</th>
+    <th>Average Rating</th>
   </tr>
 
-  <tr><% @dish.meals.order('rating desc').each do |meal| %>
+<% @dish.restaurants.uniq.each do |restaurant| %>
+
+      <tr><td><%= link_to restaurant.name, restaurant %></td>
+      <td><%= number_with_precision(restaurant.meals.where(dish_id: @dish.id).average(:rating), :precision =>1) %></td></tr>
+
+    <% end %>
+<!--   <% @dish.meals.order('rating desc').each do |meal| %>
     <td><%= link_to meal.restaurant.name, restaurant_url(meal.restaurant_id) %></td>
   <td></td>
     <td><%= meal.rating %></td>
       <td></td>
     <td><%= meal.review %></td>  </tr>
-    <% end  %>
+    <% end  %> -->
 
 </table>
 

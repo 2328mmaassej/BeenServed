@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap.css
+ *= require bootstrap-responsive.css
  *= require jquery-star-rating
  *= require dataTables/jquery.dataTables.bootstrap
  *= require jquery-ui-1.10.2.custom
@@ -142,6 +144,16 @@ font-family: 'Patrick Hand SC', cursive;
 #signup-user:hover, #login-user:hover{
 color:#4f6be8;
 }
-.ui-button-text {
-  padding: 0px -25px 0px -25px;
+#signup-user > .ui-button-text  {
+  padding-right: 0px;
+  padding-left: 74px;
+}
+
+a.nohighlight {
+  color: #666;
+  text-decoration: none;
+}
+
+#meal_partial {
+  font-size: 14px;
 }

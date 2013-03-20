@@ -3940,7 +3940,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav {
-  margin-bottom: 21px;
+  margin-bottom: 0px;
   margin-left: 0;
   list-style: none;
 }
@@ -4358,7 +4358,7 @@ input[type="submit"].btn.btn-mini {
 .navbar {
   *position: relative;
   *z-index: 2;
-  margin-bottom: 75px;
+  margin-bottom: 0px;
   overflow: visible;
 }
 
@@ -4650,12 +4650,13 @@ input[type="submit"].btn.btn-mini {
 .navbar .btn-navbar {
   display: none;
   float: right;
-  padding: 7px 10px;
+  padding: 10px 10px;
   margin-right: 5px;
+  margin-top: 30px;
   margin-left: 5px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #dcdcdc;
+  background-color: #ffffff;
   *background-color: #d4d4d4;
   background-image: -moz-linear-gradient(top, #e1e1e1, #d4d4d4);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e1e1), to(#d4d4d4));

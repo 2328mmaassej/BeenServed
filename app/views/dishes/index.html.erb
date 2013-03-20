@@ -12,12 +12,8 @@
   <h3><%= dish.category %></h3>
     <div><ul><% dish.restaurants.uniq.each do |restaurant| %>
 
-      <li><%= link_to restaurant.name, restaurant %>  Avg rating:
-      <% ratings =[] %>
-      <%restaurant.meals.where(dish_id: dish.id).each do |meal|%>
-      <% ratings << meal.rating %>
-      <% end -%>
-      <%= number_with_precision((ratings.sum.to_f / ratings.length), :precision =>1) %></li>
+      <li><%= link_to restaurant.name, restaurant %>  Average rating:
+      <%= number_with_precision(restaurant.meals.where(dish_id: dish.id).average(:rating), :precision =>1) %></li>
     <% end %></ul></div>
 <% end -%>
   </div>

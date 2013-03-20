@@ -43,9 +43,26 @@
       $('p.words', this).addClass('hidden');
       });
 
+    $("#dialog").dialog({
+      autoOpen: false,
+      modal: true,
+      height: 400,
+      width: 450,
+      show: {
+        effect: "clip",
+        duration: 750
+      },
+      hide: {
+        effect: "clip",
+        duration: 750
+      }
+    });
+
+    $("#review").click(function() {
+      $("#dialog").dialog( "open" );
+    });
+
     $( "#accordion" ).accordion({ collapsible: true, active: false });
-    /*$( ".selector" ).accordion({ active: 2 });
-*/
 
     $('.datatable').dataTable({
   "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",

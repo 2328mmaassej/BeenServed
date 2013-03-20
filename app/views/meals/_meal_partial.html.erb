@@ -3,15 +3,15 @@
     <div class="boxes">
     <%= image_tag(meal.picture_url, :class=>"pic")%>
       <p class="words hidden" id="review">
-      <%= meal.review %>
+      <%= link_to meal.review, meal_url(meal.id), class: "nohighlight" %>
     </p></div>
     <% else %>
     <p id="review">
-    <%= meal.review %>
+    <%= link_to meal.review, meal_url(meal.id), class: "nohighlight" %>
     </p>
     <% end %>
   <h5 class="meal">
-    <%= link_to meal.dish.category, dish_url(meal.dish.id) %> @ <%= link_to meal.restaurant.name, restaurant_url(meal.restaurant.id) %><br>
+    <%= link_to meal.dish.category, dish_url(meal.dish.id), class: "nohighlight" %> @ <%= link_to meal.restaurant.name, restaurant_url(meal.restaurant.id), class: "nohighlight" %><br>
           <div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px">
           <% meal.rating.to_i.times do |i|%>
           <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>

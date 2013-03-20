@@ -4,7 +4,6 @@
   <input type="text" class="search-query span12" placeholder="Search by Dish" name="keyword">
 </form>
       <legend>Reviews</legend>
-
       <ul id="list_of_meals">
         <% @meals.each do |meal| %>
         <%= render 'meal_partial', meal: meal %>

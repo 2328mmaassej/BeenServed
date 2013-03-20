@@ -8,14 +8,13 @@
   <tr>
     <th>Name</th>
     <th>Address</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Average Rating</th>
   </tr>
 <% @restaurants.each do |restaurant| %>
   <tr>
     <td><%= link_to restaurant.name, restaurant %></td>
-        <td><%= restaurant.address %></td>
+    <td><%= restaurant.address %></td>
+    <td><%= number_with_precision(restaurant.meals.average(:rating), :precision =>1) %></td>
   </tr>
 <% end %>
 </table>

@@ -1,8 +1,1 @@
-<H3> <%= @meal.dish.category %> @ <%= @meal.restaurant.name %>
-</H3>
-<p><b>Rating:</b> <%= @meal.rating %></p>
-<p><b>Review:</b> <%= @meal.review %></p>
-<p><b>Picture:</b> <%= @meal.picture %></p>
-
-<%= link_to 'Edit', edit_meal_path(@meal) %> |
-<%= link_to 'Return to profile', user_url(current_user.id) %>
+<%= render 'meal_expanded_partial', meal: @meal %>
