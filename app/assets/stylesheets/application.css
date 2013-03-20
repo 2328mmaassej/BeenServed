@@ -130,3 +130,18 @@ font-family: 'Patrick Hand SC', cursive;
   margin-right: auto !important;
 }
 
+#signup-user, #login-user {
+  font-family: Patrick Hand SC;
+  font-size: 32px;
+  padding: 7px 0px 17px 0px;
+  color: #ffffff;
+  background: #e8cc4f;
+  border: none;
+}
+
+#signup-user:hover, #login-user:hover{
+color:#4f6be8;
+}
+.ui-button-text {
+  padding: 0px -25px 0px -25px;
+}

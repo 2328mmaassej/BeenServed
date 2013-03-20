@@ -29,9 +29,7 @@ class MealsController < ApplicationController
      @meal = Meal.new(user_id: session[:user_id])
    end
 
-   if session[:user_id].presence == nil
     @user = User.new
-   end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,9 +42,8 @@ class MealsController < ApplicationController
   # GET /meals/1.json
   def show
     @meal = Meal.find(params[:id])
-    if session[:user_id].presence == nil
-     @user = User.new
-   end
+
+    @user = User.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -59,6 +56,8 @@ class MealsController < ApplicationController
   def new
     @meal = Meal.new(user_id: session[:user_id])
 
+    @user = User.new
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @meal }
@@ -68,12 +67,17 @@ class MealsController < ApplicationController
   # GET /meals/1/edit
   def edit
     @meal = Meal.find(params[:id])
+
+    @user = User.new
+
   end
 
   # POST /meals
   # POST /meals.json
   def create
     @meal = Meal.new(params[:meal])
+
+    @user = User.new
 
     respond_to do |format|
       if @meal.save
@@ -91,6 +95,8 @@ class MealsController < ApplicationController
   # PUT /meals/1.json
   def update
     @meal = Meal.find(params[:id])
+
+    @user = User.new
 
     respond_to do |format|
       if @meal.update_attributes(params[:meal])

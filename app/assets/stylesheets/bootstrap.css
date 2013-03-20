@@ -4618,7 +4618,7 @@ input[type="submit"].btn.btn-mini {
   padding: 30px 18px 42px 18px;
   color: #ffffff;
   font-family: 'Patrick Hand SC', cursive;
-  font-size: 34px;
+  font-size: 32px;
   text-decoration: none;
   text-shadow: 0 1px 0 #eeeeee;
 }
@@ -4631,7 +4631,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  color: #0099dd;
+  color: #4f6be8;
   text-decoration: none;
   background-color: transparent;
 }
@@ -6175,7 +6175,7 @@ a.badge:focus {
 
 .navbar .brand {
   display: inline-block;
-  width: 160px;
+  width: 138px;
   height: 93px;
   padding: 0;
   margin: 0 0px 0 0;

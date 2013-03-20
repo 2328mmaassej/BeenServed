@@ -17,9 +17,7 @@ class DishesController < ApplicationController
       @dishes = Dish.paginate(:page => params[:page], :per_page => 10)
     end
 
-    if session[:user_id].presence == nil
-      @user = User.new
-    end
+    @user = User.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,9 +30,8 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
 
-    if session[:user_id].presence == nil
-      @user = User.new
-    end
+    @user = User.new
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,6 +44,8 @@ class DishesController < ApplicationController
   def new
     @dish = Dish.new
 
+    @user = User.new
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @dish }
@@ -56,12 +55,17 @@ class DishesController < ApplicationController
   # GET /dishes/1/edit
   def edit
     @dish = Dish.find(params[:id])
+
+    @user = User.new
+
   end
 
   # POST /dishes
   # POST /dishes.json
   def create
     @dish = Dish.new(params[:dish])
+
+    @user = User.new
 
     respond_to do |format|
       if @dish.save
@@ -78,6 +82,8 @@ class DishesController < ApplicationController
   # PUT /dishes/1.json
   def update
     @dish = Dish.find(params[:id])
+
+    @user = User.new
 
     respond_to do |format|
       if @dish.update_attributes(params[:dish])

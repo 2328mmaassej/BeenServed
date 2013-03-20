@@ -22,18 +22,14 @@ require 'json'
       redirect_to new_restaurant_url, notice: "Restaurant not found. Please add a new restaurant."
     end
 
-   if session[:user_id].presence == nil
     @user = User.new
-   end
 
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
 
-    if session[:user_id].presence == nil
-      @user = User.new
-    end
+    @user = User.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,6 +42,8 @@ require 'json'
   def new
     @restaurant = Restaurant.new
 
+    @user = User.new
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @restaurant }
@@ -55,12 +53,17 @@ require 'json'
   # GET /restaurants/1/edit
   def edit
     @restaurant = Restaurant.find(params[:id])
+
+    @user = User.new
+
   end
 
   # POST /restaurants
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(params[:restaurant])
+
+    @user = User.new
 
     respond_to do |format|
       if @restaurant.save
@@ -77,6 +80,8 @@ require 'json'
   # PUT /restaurants/1.json
   def update
     @restaurant = Restaurant.find(params[:id])
+
+    @user = User.new
 
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])
