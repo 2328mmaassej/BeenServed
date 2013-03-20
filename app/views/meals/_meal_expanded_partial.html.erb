@@ -1,6 +1,12 @@
 <h2 align="center"><%= link_to meal.dish.category, dish_url(meal.dish.id) %> @ <%= link_to meal.restaurant.name, restaurant_url(meal.restaurant.id) %></h2>
 <div class="row">
-  <div class="span2 offset4"><%= image_tag(meal.picture_url)%></div>
+  <div class="span2 offset4">
+    <% if meal.picture? %>
+    <%= image_tag(meal.picture_url)%>
+    <%else %>
+    <%= image_tag("/assets/nomnomlogo2green.png", class:"greenlogo")%>
+    <% end -%>
+  </div>
   <div class="span3"><p id="meal_partial"><div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px"></div>
   <% meal.rating.to_i.times do |i|%>
     <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
@@ -8,23 +14,4 @@
   <p id="meal_partial"><%= meal.review %></p>
   <p></p>
 <p id="meal_partial"><%= image_tag(meal.user.avatar.thumb.url) %> <%= meal.user.username %> | <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%></p>
-
-
-<!--
-
-<div class="row-fluid">
-  <div class="span3 offset4">
-    <div>
-    <div class="row-fluid">
-  <div class="span3 offset9">
-      <div class="span6"><div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px"></div>
-<% meal.rating.to_i.times do |i|%>
-  <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
-<% end %></div>
-      <div class="span6"> <div><%= image_tag(meal.user.avatar.thumb.url) %><%= meal.user.username %><%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%></div></div>
-    </div>
-  </div>
-  <div class="span6"><%= meal.review %></div>
-</div>
-</div> -->
 

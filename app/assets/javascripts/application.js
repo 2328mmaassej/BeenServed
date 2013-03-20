@@ -43,11 +43,11 @@
       $('p.words', this).addClass('hidden');
       });
 
-    $("#dialog").dialog({
+    /*$(".dialog").dialog({
       autoOpen: false,
       modal: true,
-      height: 400,
-      width: 450,
+      height: 500,
+      width: 550,
       show: {
         effect: "clip",
         duration: 750
@@ -59,8 +59,8 @@
     });
 
     $("#review").click(function() {
-      $("#dialog").dialog( "open" );
-    });
+      $(".dialog").dialog( "open" );
+    });*/
 
     $( "#accordion" ).accordion({ collapsible: true, active: false });
 

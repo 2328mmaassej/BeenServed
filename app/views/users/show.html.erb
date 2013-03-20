@@ -2,10 +2,10 @@
   <div class="row-fluid">
     <div class="span2">
       <!--Sidebar content-->
-      <div><%= image_tag(@user.avatar.thumb.url) %></div>
       <h3>
          <%=  @user.username.capitalize %>'s Profile
       </h3>
+      <div><%= image_tag(@user.avatar.thumb.url, id: "thumb") %></div>
       <p><%= link_to '(edit profile)', edit_user_path(@user) %></p>
       <p># of reviews: <%= @user.meals.count %></p>
       <p>average rating:
