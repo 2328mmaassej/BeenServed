@@ -12,7 +12,6 @@
  *= require bootstrap.css
  *= require bootstrap-responsive.css
  *= require jquery-star-rating
- *= require dataTables/jquery.dataTables.bootstrap
  *= require jquery-ui-1.10.2.custom
  *= require_tree .
  */
@@ -139,6 +138,7 @@ font-family: 'Patrick Hand SC', cursive;
   color: #ffffff;
   background: #e8cc4f;
   border: none;
+  float: right;
 }
 
 #signup-user:hover, #login-user:hover{
