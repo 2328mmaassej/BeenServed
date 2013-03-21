@@ -11,14 +11,12 @@
 <% @dishes.order('category asc').each do |dish| %>
   <h3><%= dish.category %></h3>
   <div>
-    <table class="table table-hover">
+    <table class="table table-hover span6">
     <% dish.restaurants.order('name asc').uniq.each do |restaurant| %>
     <tr>
       <td><%= link_to restaurant.name, restaurant %></td>
       <td>Average rating: <%= number_with_precision(restaurant.meals.where(dish_id: dish.id).average(:rating), :precision =>1) %> stars</td>
     </tr>
-
-       | </li>
     <% end %>
   </table></div>
 <% end -%>
