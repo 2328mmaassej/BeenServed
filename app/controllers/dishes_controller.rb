@@ -63,7 +63,9 @@ class DishesController < ApplicationController
   # POST /dishes
   # POST /dishes.json
   def create
-    @dish = Dish.new(params[:dish].downcase)
+    params[:dish][:category] = params[:dish][:category].downcase
+
+    @dish = Dish.new(params[:dish])
 
     @user = User.new
 
