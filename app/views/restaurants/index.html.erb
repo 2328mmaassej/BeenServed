@@ -1,22 +1,28 @@
 <h2>Where do you wanna eat?</h2>
 
-<form class="navbar-search pull-left" action="/restaurants">
+<form class="navbar-search pull-right" action="/restaurants">
   <input type="text" class="search-query span3" placeholder="Search by Restaurant" name="keyword">
 </form>
 
-<table class="table table-striped">
+<table id="restaurants">
+  <thead>
   <tr>
     <th>Name</th>
     <th>Address</th>
+    <th>Number of Ratings</th>
     <th>Average Rating</th>
   </tr>
+  </thead>
+  <tbody>
 <% @restaurants.each do |restaurant| %>
   <tr>
     <td><%= link_to restaurant.name, restaurant %></td>
     <td><%= restaurant.address %></td>
+    <td> <%= restaurant.meals.count %></td>
     <td><%= number_with_precision(restaurant.meals.average(:rating), :precision =>1) %></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
 
 <%= will_paginate @restaurants %>

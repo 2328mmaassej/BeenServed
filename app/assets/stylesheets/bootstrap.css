@@ -4602,7 +4602,7 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   left: 0;
   display: block;
-  float: left;
+  /*float: left;*/
   margin: 0 10px 0 0;
 }
 

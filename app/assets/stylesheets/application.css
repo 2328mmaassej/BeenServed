@@ -146,7 +146,7 @@ color:#4f6be8;
 }
 #signup-user > .ui-button-text  {
   padding-right: 0px;
-  padding-left: 74px;
+  padding-left: 0px;
 }
 
 a.nohighlight {
@@ -159,5 +159,11 @@ a.nohighlight {
 }
 
 #thumb {
-  width: ;
+  width: 100px;
+}
+
+.ui-dialog {
+  font-family: Raleway !important;
+  font-size:1.0em !important;
+
 }

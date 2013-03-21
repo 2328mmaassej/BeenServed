@@ -16,6 +16,8 @@
 //= require jquery-star-rating
 //= require_tree .
 
+
+
 (function($){
   var pr = 0, bgWidth = true, bgResize;
 
@@ -31,6 +33,7 @@
     }
   };
 
+
   $(document).ready(function() {
     $('.boxes').mouseover(function(){
       $('.pic', this).addClass('hidden');
@@ -40,6 +43,8 @@
       $('.pic', this).removeClass('hidden');
       $('p.words', this).addClass('hidden');
       });
+
+
 
     /*$(".dialog").dialog({
       autoOpen: false,

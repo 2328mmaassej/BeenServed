@@ -12,9 +12,9 @@ class DishesController < ApplicationController
   def index
     if params[:keyword].present?
       keyword = params[:keyword].downcase
-      @dishes = Dish.where("LOWER(category) LIKE ?", "%#{keyword}%").paginate(:page => params[:page], :per_page => 10)
+      @dishes = Dish.where("LOWER(category) LIKE ?", "%#{keyword}%").paginate(:page => params[:page], :per_page => 100)
     else
-      @dishes = Dish.paginate(:page => params[:page], :per_page => 10)
+      @dishes = Dish.paginate(:page => params[:page], :per_page => 100)
     end
 
     @user = User.new
