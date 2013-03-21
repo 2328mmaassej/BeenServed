@@ -1,10 +1,12 @@
-<h2>Where do you wanna eat?</h2>
+<div class="container-fluid">
+  <div class="row-fluid">
+      <div class="row">
+        <h2 class="span1">&nbsp;&nbsp;Restaurants</h2>
+<div class="pull-right offset1"><form class="navbar-search align=center" action="/restaurants">
+  <input type="text" class="search-query span12" placeholder="Search by Restaurant" name="keyword">
+</form></div></div><br>
 
-<form class="navbar-search pull-right" action="/restaurants">
-  <input type="text" class="search-query span3" placeholder="Search by Restaurant" name="keyword">
-</form>
-
-<table id="restaurants">
+<table class="table table-hover">
   <thead>
   <tr>
     <th>Name</th>
@@ -31,3 +33,5 @@
 
 <nav class="btn"><%= link_to 'New Restaurant', new_restaurant_path %></nav>
 
+  </div>
+</div>

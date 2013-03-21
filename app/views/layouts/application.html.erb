@@ -87,14 +87,14 @@
           </ul>
           <!-- <form class="navbar-search pull-right" action="">
             <input type="text" class="search-query span3" placeholder="Search by dish or restaurant">
-          </form>
-          <ul class="nav pull-right"> -->
+          </form>-->
+          <ul class="nav pull-right">
             <% if current_user.present? %>
-             <li class="pull-right"><%= link_to "my profile", user_url(current_user.id) %></li>
-             <li class="pull-right"><%= link_to "logout", logout_url %></li>
+             <li id="signedin"><%= link_to "my profile", user_url(current_user.id) %></li>
+             <li id="signedin"><%= link_to "logout", logout_url %></li>
             <% else %>
+            <li id="login-user">log in</li>
             <li id="signup-user">sign up</li>
-           <li id="login-user">log in</li>
             <% end %>
             </ul>
             </div>

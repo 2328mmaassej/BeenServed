@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row-fluid">
       <div class="row">
-        <h2 class="span1 offset1">Reviews</h2>
+        <h2 class="span1">&nbsp;&nbsp;Reviews</h2>
 <div class="pull-right offset1"><form class="navbar-search align=center" action="/meals">
   <input type="text" class="search-query span12" placeholder="Search by Dish" name="keyword">
-</form></div>
+</form></div></div><br>
 <!-- <div class="pull-right">
   <form action="/meals">
   <select>
@@ -17,8 +17,7 @@
     <option value="5">Oldest</option>
 </select>
 </form></div> -->
-      </div>
-      <ul id="list_of_meals">
+      <ul id="list_of_meals" align="center">
         <% @meals.each do |meal| %>
         <%= render 'meal_partial', meal: meal %>
         <!-- <div class="dialog <%= meal.id %>" title="Details">
