@@ -14,9 +14,9 @@ require 'json'
   def index
     if params[:keyword].present?
       keyword = params[:keyword].downcase
-      @restaurants = Restaurant.where("LOWER(name) LIKE ?", "%#{keyword}%").paginate(:page => params[:page], :per_page => 10)
+      @restaurants = Restaurant.where("LOWER(name) LIKE ?", "%#{keyword}%").paginate(:page => params[:page], :per_page => 100)
     else
-      @restaurants = Restaurant.order("name asc").paginate(:page => params[:page], :per_page => 10)
+      @restaurants = Restaurant.order("name asc").paginate(:page => params[:page], :per_page => 100)
     end
     if @restaurants.empty?
       redirect_to new_restaurant_url, notice: "Restaurant not found. Please add a new restaurant."

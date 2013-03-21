@@ -48,6 +48,7 @@ li.meal {
   padding: 10px;
   width: 260px;
   overflow: hidden;
+  list-style-type: none;
 /*  border-radius: 15px;
 */}
 
@@ -149,6 +150,7 @@ font-family: 'Patrick Hand SC', cursive;
 #signup-user:hover, #login-user:hover{
 color:#4f6be8;
 }
+
 #signup-user > .ui-button-text  {
   padding-right: 0px;
   padding-left: 0px;
@@ -172,3 +174,5 @@ a.nohighlight {
   font-size:1.0em !important;
 
 }
+
+

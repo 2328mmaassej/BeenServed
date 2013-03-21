@@ -1,26 +1,22 @@
-<h2>
-   <%=  @dish.category %>
-</h2>
-
-<table class="table table-striped span2">
-  <tr>
-    <th>Restaurant</th>
-    <th>Average Rating</th>
-  </tr>
-
+<h2><%=  @dish.category %></h2>
+<% restaurants =[] %>
+<% average_ratings = [] %>
+<% number_of_ratings = [] %>
 <% @dish.restaurants.uniq.each do |restaurant| %>
+<% restaurants << restaurant.name %>
+<% average_ratings << number_with_precision(restaurant.meals.where(dish_id: @dish.id).average(:rating), :precision =>1) %>
+<% number_of_ratings << restaurant.meals.where(dish_id: @dish.id).count %>
+<% end %>
+<% highest_rating = average_ratings.max %>
+<% highest_restaurant = restaurants[average_ratings.index(average_ratings.max)] %>
+<% most_ratings = number_of_ratings.max %>
+<% most_rated_restaurant = restaurants[number_of_ratings.index(most_ratings)] %>
+<% most_rated_rating = average_ratings[number_of_ratings.index(most_ratings)] %>
+<p>Highest rated restaurant: <%= highest_restaurant %> | <%= highest_rating %> stars (<%= number_of_ratings[average_ratings.index(average_ratings.max)] %> reviews)</p>
+<p>Most rated restaurant: <%= most_rated_restaurant  %> | <%= most_rated_rating %> stars (<%= most_ratings %> reviews)</p>
 
-      <tr><td><%= link_to restaurant.name, restaurant %></td>
-      <td><%= number_with_precision(restaurant.meals.where(dish_id: @dish.id).average(:rating), :precision =>1) %></td></tr>
+<% @dish.meals.order('rating desc').each do |meal| %>
+<%= render "meals/meal_partial", meal: meal %>
+<% end  %>
 
-    <% end %>
-<!--   <% @dish.meals.order('rating desc').each do |meal| %>
-    <td><%= link_to meal.restaurant.name, restaurant_url(meal.restaurant_id) %></td>
-  <td></td>
-    <td><%= meal.rating %></td>
-      <td></td>
-    <td><%= meal.review %></td>  </tr>
-    <% end  %> -->
-
-</table>
 

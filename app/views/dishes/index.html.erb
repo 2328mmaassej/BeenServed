@@ -2,15 +2,18 @@
 
 
 
-<form class="navbar-search pull-left" action="/dishes">
+<form  class="navbar-search pull-left" action="/dishes">
   <input type="text" class="search-query span3" placeholder="Search by Dish" name="keyword">
-</form>
-<br><br><br>
-
+  <input type="submit" value='Submit'>
+</form> &nbsp;&nbsp;
+<a href="/dishes">View All</a>
+<br>
+<br>
 <div id="accordion">
 <% @dishes.order('category asc').each do |dish| %>
   <h3><%= dish.category %></h3>
   <div>
+    <%= link_to 'see details', dish_url(dish.id) %><br><br>
     <table class="table table-hover span6">
     <% dish.restaurants.order('name asc').uniq.each do |restaurant| %>
     <tr>

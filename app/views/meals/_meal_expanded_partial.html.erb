@@ -7,7 +7,7 @@
     <%= image_tag("/assets/nomnomlogo2green.png", class:"greenlogo")%>
     <% end -%>
   </div>
-  <div class="span3"><p id="meal_partial"><div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px"></div>
+  <div class="span4"><p id="meal_partial"><div class='reviewstars' style="width:<%= 17*meal.rating.to_i %>px"></div>
   <% meal.rating.to_i.times do |i|%>
     <div role="text" aria-label class="star-rating rater-0 star star-rating-applied star-rating-live star-rating-hover" id="star"><a title="star">star</a></div>
   <% end %></p> <br>
