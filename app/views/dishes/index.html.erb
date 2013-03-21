@@ -10,13 +10,13 @@
 <div id="accordion">
 <% @dishes.each do |dish| %>
   <h3><%= dish.category %></h3>
-    <div><ul><% dish.restaurants.uniq.each do |restaurant| %>
+    <div><ul><% dish.restaurants.order('name asc').uniq.each do |restaurant| %>
 
       <li><%= link_to restaurant.name, restaurant %>  Average rating:
-      <%= number_with_precision(restaurant.meals.where(dish_id: dish.id).average(:rating), :precision =>1) %></li>
+      <%= number_with_precision(restaurant.meals.where(dish_id: dish.id).average(:rating), :precision =>1) %> stars</li>
     <% end %></ul></div>
 <% end -%>
   </div>
 
-<nav class="btn"><%= link_to 'New Category', new_dish_path %></nav>
+<nav class="btn"><%= link_to 'Add New Dish Category', new_dish_path %></nav>
 
