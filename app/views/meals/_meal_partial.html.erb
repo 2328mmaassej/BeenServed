@@ -18,8 +18,8 @@
           <% end %>
         </div>
         <% if session[:user_id] == meal.user.id %>
-         <div class="pull-right"><%= link_to '', meal, method: :delete, remote: true, class:"ui-icon ui-icon-trash"%></div>
-        <div class="pull-right"><%= link_to '', edit_meal_path(meal), class:"ui-icon ui-icon-pencil" %></div>
+        <div class="pull-right" data-toggle="tooltip" title="delete"><%= link_to '', meal, method: :delete, remote: true, class:"ui-icon ui-icon-trash" %></div>
+        <div class="pull-right" data-toggle="tooltip" title="edit"><%= link_to '', edit_meal_path(meal), class:"ui-icon ui-icon-pencil" %></div>
         <!--     <%= meal.created_at.strftime("%m/%d/%Y %l:%M %P")%> |-->
         <% end -%>
   </h3>

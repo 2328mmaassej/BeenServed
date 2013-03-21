@@ -16,11 +16,11 @@
   </div>
   <div class="form-inline">
     <%= f.label :restaurant_id, "Restaurant:", class: "span2" %><br>
-    <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>
+    <%= f.collection_select :restaurant_id, Restaurant.order('name asc').all, :id, :name %>
   </div>
   <div class="form-inline"><br>
     <%= f.label :dish_id, "Dish:", class: "span2" %><br>
-    <%= f.collection_select :dish_id, Dish.all, :id, :category %>
+    <%= f.collection_select :dish_id, Dish.order('category asc').all, :id, :category %>
   </div>
   <br>
     <%= f.label :rating, "Rating:", class: "span2" %>

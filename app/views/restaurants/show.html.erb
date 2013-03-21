@@ -3,28 +3,23 @@
 </h3>
 
 <p>
-  <b>Basic Info:</b>
+  <b>Overall rating: <%= number_with_precision(@restaurant.meals.average(:rating), :precision =>1) %> stars</b>
+  <br>
   <p><%= @restaurant.address %></p>
   <p><%= @restaurant.city %>, <%= @restaurant.postcode %></p>
   <p><%= @restaurant.phone_number %></p>
 
 </p>
 
-<table class="table table-hover">
-  <tr>
-    <th>Dish</th>
-    <th></th>
-    <th>Rating</th>
-    <th></th>
-    <th>Review</th>
-  </tr>
-
-  <tr><% @restaurant.meals.each do |i| %>
-    <td><%= i.dish.category %></td>
-  <td></td>
-    <td><%= i.rating %></td>
-      <td></td>
-    <td><%= i.review %></td>  </tr>
-    <% end  %>
-
-</table>
+<div id="accordion">
+<% @restaurant.dishes.order('category asc').uniq.each  do |dish| %>
+  <h3><%= dish.category %> <%= number_with_precision(@restaurant.meals.where(dish_id: dish.id).average(:rating), :precision =>1) %> stars</h3>
+  <div>
+    <ul>
+      <% dish.meals.where(restaurant_id: @restaurant.id).order('rating desc').each do |meal| %>
+      <%= render 'meals/meal_partial', meal: meal %>
+      <% end %>
+    </ul>
+  </div>
+    <% end -%>
+</div>
