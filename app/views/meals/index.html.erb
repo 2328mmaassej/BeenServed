@@ -1,22 +1,12 @@
-<div class="container-fluid">
-  <div class="row-fluid">
-      <div class="row">
-        <h2 class="span1">&nbsp;&nbsp;Reviews</h2>
-<div class="pull-right offset1"><form class="navbar-search align=center" action="/meals">
-  <input type="text" class="search-query span12" placeholder="Search by Dish" name="keyword">
-</form></div></div><br>
-<!-- <div class="pull-right">
-  <form action="/meals">
-  <select>
-    <option value="-">Sort results by:</option>
-    <option value="0">Rating: high to low</option>
-    <option value="1">Rating: low to high</option>
-    <option value="2">Category: A to Z</option>
-    <option value="3">Category: Z to A</option>
-    <option value="4">Most recent</option>
-    <option value="5">Oldest</option>
-</select>
-</form></div> -->
+<h2>Reviews</h2>
+<form  class="navbar-search pull-left" action="/meals">
+  <input type="text" class="search-query span3" placeholder="Search by Restaurant" name="keyword">
+  <input type="submit" value='Submit'>
+</form> &nbsp;&nbsp;
+<a href="/meals">Reset search filter</a>
+<br>
+<br>
+<br>
       <ul id="list_of_meals" align="center">
         <% @meals.each do |meal| %>
         <%= render 'meal_partial', meal: meal %>
