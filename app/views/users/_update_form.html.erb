@@ -17,6 +17,10 @@
     <%= f.text_field :email %>
   </div>
   <div class="form-inline">
+    <%= f.label :password, "Confirm password: " %>
+    <%= f.password_field :password %>
+  </div>
+<div class="form-inline">
     <%= image_tag(@user.avatar.thumb.url) if @user.avatar? %><br>
     <%= f.label :avatar, "Avatar: "%>
     <%= f.file_field :avatar %>
