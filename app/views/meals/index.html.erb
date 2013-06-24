@@ -7,7 +7,8 @@
 <br>
 <br>
 <br>
-      <ul id="list_of_meals" align="center">
+<div class="wrapper">
+      <ul id="list_of_meals" class="wrapper">
         <% @meals.each do |meal| %>
         <%= render 'meal_partial', meal: meal %>
         <!-- <div class="dialog <%= meal.id %>" title="Details">
@@ -15,6 +16,4 @@
         </div> -->
         <% end %>
       </ul>
-  </div>
 </div>
-
