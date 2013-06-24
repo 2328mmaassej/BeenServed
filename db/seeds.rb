@@ -13,7 +13,20 @@ restaurant_list.count.times do |i|
 restaurant = Restaurant.create({name: restaurant_list[i], address: restaurant_address[i]})
 end
 
+pictures = [{ :dish_id => Dish.find_by_category("Burger").id, :picture => "http://www.sandwichpro.com/getattachment/150cd04d-46e0-47fe-b5b1-e3983ec1c7bc/NewsTrends/IndustryNews/October2012/Montreal-Throws-a-Burger-Party" },
+          { :dish_id => Dish.find_by_category("Taco").id, :picture => "http://deli-cioso.net/wp-content/uploads/2012/01/Tacos2.jpg" },
+          { :dish_id => Dish.find_by_category("Eggs Benedict").id, :picture => "http://wikka.moreawesomethanyou.com/images/f/fc/EggsBenedict.jpg" },
+          { :dish_id => Dish.find_by_category("Pancakes").id, :picture => "http://pixelatedcrumb.com/wp-content/uploads/2011/10/Pumpkin_Cinnamon_Roll_Pancakes-5.jpg" },
+          { :dish_id => Dish.find_by_category("French Fries").id, :picture => "http://3.bp.blogspot.com/_e6DyH-BVX80/SqKLUoRMjkI/AAAAAAAABg0/WpdEqsntTGw/s400/Truffle+Fries.jpg" },
+          { :dish_id => Dish.find_by_category("Mac & Cheese").id, :picture => "http://www.cntraveler.com/daily-traveler/2012/10/macaroni-and-cheese-restaurants-food-los-angeles-new-york-san-francisco/_jcr_content/par/cn_contentwell/par-main/cn_colctrl/par-col2/cn_slideshow/item0.rendition.slideshowWideHorizontal.mission-cheese-san-francisco-mac-and-cheese.jpg" },
+          { :dish_id => Dish.find_by_category("Pizza").id, :picture => "http://www.topnews.in/usa/files/deep-dish.jpg" },
+          { :dish_id => Dish.find_by_category("Ice Cream").id, :picture => "http://i13.photobucket.com/albums/a272/LetsReminisce/Blog/MargiesCandies.jpg" },
+          { :dish_id => Dish.find_by_category("Bagel").id, :picture => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRLeeoBye533DVCGT5E7hh75vntm65ZYu2T-1TUHrjtwJza4w8" },
+          { :dish_id => Dish.find_by_category("Cupcake").id, :picture => "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSqOUDtcg5bBvA6SAn3TgHPeTafbGbKY5g9VTAy-MITczwj1oa2" }]
 
+pictures do |picture|
+picture = Meal.create()
+end
 
 dishes = Dish.limit(10)
 restaurants = Restaurant.limit(20)
@@ -21,7 +34,6 @@ users = User.limit(3)
 ratings = [1,2,3,4,5]
 reviews = ["Amazing", "The worst", "Eh. Not worth it.", "The best in town"]
 30.times do |visit|
-meal = Meal.create({user_id: users.shuffle.first.id, restaurant_id: restaurants.shuffle.first.id, dish_id: dishes.shuffle.first.id, rating: ratings.shuffle.first, review: reviews.shuffle.first})
+meal = Meal.create({user_id: users.shuffle.first.id, restaurant_id: restaurants.shuffle.first.id, dish_id: dishes.shuffle.first.id, rating: ratings.shuffle.first, review: reviews.shuffle.first}, picture: pictures)
 end
-
 
